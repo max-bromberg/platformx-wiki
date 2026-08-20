@@ -1,77 +1,118 @@
 # Running jobs
 
-You work from the login node, which you reach with `ssh <you>@sprlab005.csl.illinois.edu`. From there you request an allocation from SLURM and then connect to the compute node it assigns you. This page covers the common cases, and the [Command reference](cheatsheet.md) lists every command in brief.
+Connect to `sprlab005.csl.illinois.edu`, request resources through Slurm, and let Slurm place the work on a compute node. The login host is not a compute node.
 
-## Request a GPU
+!!! note "Research and course jobs route differently"
+    The research examples below rely on the account’s default research policy. Course students must also select the assignment account shown in Sprocket; course-only accounts cannot submit unbudgeted research work. See [Course workflow](coursework.md).
 
-`salloc` reserves resources and gives you an interactive allocation. Ask for the number of GPUs and the wall-clock time you need:
+## Interactive or batch
 
-```bash
-salloc --gres=gpu:1 --time=4:00:00     # one GPU for four hours
-salloc --gres=gpu:2 --time=2:00:00     # both GPUs on a node, for two hours
-```
+- **Interactive (`salloc` or standalone `srun`)** is for development, debugging, and short tests where you need a shell.
+- **Batch (`sbatch`)** is for unattended training, sweeps, data preparation, and anything you want to leave running.
 
-Each node has two GPUs, so two is the most you can request on a single node. After the allocation is granted, `squeue --me` shows which node you received.
+For research accounts, interactive work is routed to `debug` and capped at one hour. Batch work runs on `main` and follows the selected research tier’s wall-time limit. Course work always runs through the course gate on `main`; its assignment supplies the wall-time ceiling and budget.
 
-## Request CPUs only
-
-Work that does not use a GPU goes through SLURM in the same way. Request cores and memory and leave off `--gres`:
+## Short research session
 
 ```bash
-salloc --cpus-per-task=8 --mem=32G --time=4:00:00
+salloc --gres=gpu:1 --time=1:00:00
+squeue --me
+ssh <assigned-node>
 ```
 
-A job that requests a GPU receives a generous default share of cores and memory automatically, so you only need `--cpus-per-task` and `--mem` when you want something different from the default.
+Each node has two GPUs, so a single-node request can use one or two. An interactive research request above one hour is trimmed to one hour. An explicit research interactive request for `main` is rejected; submit a batch job instead.
 
-## Connect to your node
-
-Once you hold an allocation, connect to the assigned node and work normally:
+For CPU-only research work, leave off the GPU request:
 
 ```bash
-ssh <node>        # for example, sprc01
-nvidia-smi        # the GPUs available to you
+salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-Your SSH session joins the allocation and is bound by the same limits, so your editors, conda environments, and containers all behave as they do today.
-
-## Time limits
-
-Every allocation has a wall-clock limit set by `--time` in `HH:MM:SS` form. When the time runs out, the allocation ends and the resources return to the pool. The `main` partition allows up to three days for a single job. Set `--time` to what you realistically need, and request more on your next run if you come up short. If a job ends before you expected, run `sacct -j <jobid>` and read the `State` column; `TIMEOUT` means the job reached its limit.
-
-## Long runs
-
-For a long interactive session, start `tmux` on the login node before you allocate, so the session survives a dropped connection or a sleeping laptop:
+Course allocations require a GPU and an assignment account:
 
 ```bash
-tmux                                    # start tmux on the login node
-salloc --gres=gpu:1 --time=24:00:00     # hold the allocation
-ssh <node>                              # work on the node
+salloc --account=<assignment> --gres=gpu:1 --time=0:30:00
 ```
 
-Detach from tmux with `Ctrl-b` then `d`, and reattach later with `tmux attach`.
+## Submit a batch job
 
-## Batch jobs
-
-From July 1, `sbatch` lets you submit a job and walk away. SLURM runs it when resources are free and writes its output to a file. Put your resource requests at the top of the script as `#SBATCH` lines:
+Create a script with resource requests at the top:
 
 ```bash
 #!/bin/bash
 #SBATCH --gres=gpu:1
 #SBATCH --time=12:00:00
 #SBATCH --job-name=train
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=<netid>
+
 srun python train.py
 ```
 
-Submit it with `sbatch train.sh` and follow its progress with `squeue --me`. Until soft enforcement begins on July 1, use `salloc` inside `tmux` for long runs.
-
-## Deadlines
-
-When you have a paper or demo deadline, the sysadmin team can raise your queue priority for a set window. Ask in `#server`. Once your account holds the `expedite` priority, add `--qos=expedite` to your request:
+Then submit and monitor it:
 
 ```bash
-salloc --gres=gpu:1 --time=8:00:00 --qos=expedite
+sbatch train.sh
+squeue --me
 ```
 
-## During the optional period
+For course work, add the assignment account to the script or command:
 
-Until soft enforcement begins on July 1, GPU isolation is not yet active, so `nvidia-smi` on a node lists all of its GPUs rather than only the ones you reserved. Please use only the GPUs your allocation granted you. Check the [dashboard](/dashboard/) or `squeue` to see what is already running on a node so that you do not overlap with someone else. From July 1 onward, an allocation sees only the GPUs it reserved.
+```bash
+#SBATCH --account=<assignment>
+```
+
+Use the exact value from Sprocket. When several assignments are open, omitting it is rejected because Slurm cannot know which budget to charge.
+
+## Resource defaults
+
+If a GPU job does not specify CPU or memory, each GPU receives 32 Slurm CPUs (16 physical cores) and about 384 GB of memory. Two GPUs receive 64 Slurm CPUs and about 768 GB. A CPU-only research job with no CPU request receives 4 Slurm CPUs and about 48 GB.
+
+Request explicit values only when the job needs something different:
+
+```bash
+sbatch --gres=gpu:1 --cpus-per-task=16 --mem=128G --time=6:00:00 train.sh
+```
+
+Over-requesting reduces placement options and, for course work, holds more assignment budget.
+
+## Connect to an allocated node
+
+After `salloc` starts, `squeue --me` shows the assigned node. SSH to that node:
+
+```bash
+ssh sprc01
+nvidia-smi
+```
+
+The session joins the allocation and inherits its GPU, CPU, memory, and time limits. SSH to a compute node without an allocation is declined. Start `tmux` on the login host before `salloc` if a brief network interruption would otherwise lose an interactive shell.
+
+## Watch and diagnose
+
+```bash
+squeue --me
+squeue --me --start
+scontrol show job <jobid>
+sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
+```
+
+Pending is normal. The reason field explains whether the job is waiting for resources, priority, a reservation, or an account/QoS limit. Start times are estimates and become less reliable farther into the future.
+
+Use [Sprocket Queue](/queue) and [Usage](/usage) for the same system at a glance.
+
+## Stop or change work
+
+```bash
+scancel <jobid>
+scancel --me
+```
+
+Cancel work you no longer need. For course jobs, changes that affect cost or placement require cancel-and-resubmit so the budget reservation stays correct. Harmless metadata and hold/release operations remain available.
+
+## Email notifications
+
+Use `--mail-type=BEGIN,END,FAIL,TIME_LIMIT` and `--mail-user=<netid>`. A bare NetID is delivered to `<netid>@illinois.edu`. Messages come from “SPRC Cluster”; replies are not monitored.
+
+## Research deadline and best-effort tiers
+
+Research users can request a temporary `expedite` grant for a genuine paper or demo deadline, or submit checkpointable batch work with `--qos=scavenger` to use idle capacity at the risk of requeue. These options do not apply to course jobs. See [Priority, capacity, and fair sharing](priority.md).

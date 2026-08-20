@@ -6,17 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation for the sprc compute cluster — logging in, running jobs, storage, and the SLURM transition.">
+        <meta name="description" content="Documentation for the sprc compute cluster — logging in, running jobs on SLURM, storage, and sharing the GPUs fairly.">
       
       
       
         <link rel="canonical" href="http://sprlab005.csl.illinois.edu/faq/">
       
       
-        <link rel="prev" href="../vscode/">
+        <link rel="prev" href="../agentic-helper/">
       
-      
-        <link rel="next" href="../slurm-transition/">
       
       
         
@@ -84,17 +82,6 @@
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-  🖥️ <strong>Live cluster status:</strong>
-  <a href="/dashboard/">open the dashboard&nbsp;&#8599;</a>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -181,6 +168,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
@@ -275,33 +267,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../storage-migration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Migrate your data
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
     
     
       
@@ -319,17 +284,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Running jobs
+    Start here
   
 
     
@@ -340,16 +305,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Running jobs
+    Start here
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accounts & access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -407,6 +400,384 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduling policy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scheduling policy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../priority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Priority, capacity & fair sharing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course students
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course students
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coursework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage & files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage & files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows & file management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprocket portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
               
                 
   
@@ -422,6 +793,34 @@
     
   
     VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic coding helper
   
 
     
@@ -509,10 +908,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#my-job-was-killed-why" class="md-nav__link">
+  <a href="#why-did-my-job-stop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My job was killed. Why?
+        Why did my job stop?
       
     </span>
   </a>
@@ -520,10 +919,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-i-still-have-to-do-this-i-used-to-just-ssh-in" class="md-nav__link">
+  <a href="#why-is-my-job-pending" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Do I still have to do this? I used to just SSH in.
+        Why is my job pending?
       
     </span>
   </a>
@@ -531,10 +930,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-only-need-cpu-not-a-gpu-does-this-apply-to-me" class="md-nav__link">
+  <a href="#can-i-ssh-directly-to-a-compute-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I only need CPU, not a GPU. Does this apply to me?
+        Can I SSH directly to a compute node?
       
     </span>
   </a>
@@ -542,10 +941,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-june-30-deadline-about-do-i-need-to-move-my-data" class="md-nav__link">
+  <a href="#i-need-only-cpus-do-i-still-use-slurm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is the June 30 deadline about? Do I need to move my data?
+        I need only CPUs. Do I still use Slurm?
       
     </span>
   </a>
@@ -553,10 +952,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-ask-for-more-than-one-gpu" class="md-nav__link">
+  <a href="#why-is-interactive-research-limited-to-an-hour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I ask for more than one GPU?
+        Why is interactive research limited to an hour?
       
     </span>
   </a>
@@ -564,10 +963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-know-what-is-free-before-i-ask" class="md-nav__link">
+  <a href="#what-is-my-account-type" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I know what is free before I ask?
+        What is my account type?
       
     </span>
   </a>
@@ -575,10 +974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-job-is-stuck-in-pd-pending-what-does-that-mean" class="md-nav__link">
+  <a href="#what-course-account-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My job is stuck in PD (pending). What does that mean?
+        What course account should I use?
       
     </span>
   </a>
@@ -586,10 +985,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-submit-a-job-and-come-back-later" class="md-nav__link">
+  <a href="#how-is-course-budget-charged" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Can I submit a job and come back later?
+        How is course budget charged?
       
     </span>
   </a>
@@ -597,10 +996,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-still-use-vs-code-remote-ssh" class="md-nav__link">
+  <a href="#why-does-my-course-budget-look-unavailable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Can I still use VS Code Remote-SSH?
+        Why does my course budget look unavailable?
       
     </span>
   </a>
@@ -608,10 +1007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-time-limit-is-too-short-for-my-training-run" class="md-nav__link">
+  <a href="#can-course-assignments-overlap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My time limit is too short for my training run.
+        Can course assignments overlap?
       
     </span>
   </a>
@@ -619,10 +1018,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-have-a-paper-or-demo-deadline-can-i-get-priority" class="md-nav__link">
+  <a href="#my-team-changed-what-happens-to-jobs-budget-and-submissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I have a paper or demo deadline. Can I get priority?
+        My team changed. What happens to jobs, budget, and submissions?
       
     </span>
   </a>
@@ -630,10 +1029,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#does-any-of-this-change-my-login-files-or-environment" class="md-nav__link">
+  <a href="#how-do-we-submit-course-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Does any of this change my login, files, or environment?
+        How do we submit course work?
       
     </span>
   </a>
@@ -641,10 +1040,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-did-my-gpu-go-when-my-allocation-ended" class="md-nav__link">
+  <a href="#how-do-i-request-a-course-extension-or-budget-exception" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where did my GPU go when my allocation ended?
+        How do I request a course extension or budget exception?
       
     </span>
   </a>
@@ -652,10 +1051,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#still-stuck" class="md-nav__link">
+  <a href="#where-do-files-live" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Still stuck?
+        Where do files live?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-slurm-email-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can Slurm email me?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-more-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use more GPUs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use VS Code?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-login-host-command-feels-throttled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A login-host command feels throttled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-do-i-ask-for-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do I ask for help?
       
     </span>
   </a>
@@ -665,132 +1119,6 @@
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../slurm-transition/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    About the transition
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../admins/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sysadmin reference
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Sysadmin reference
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../admins/provisioning-new-users/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    New user provisioning
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -823,10 +1151,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#my-job-was-killed-why" class="md-nav__link">
+  <a href="#why-did-my-job-stop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My job was killed. Why?
+        Why did my job stop?
       
     </span>
   </a>
@@ -834,10 +1162,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-i-still-have-to-do-this-i-used-to-just-ssh-in" class="md-nav__link">
+  <a href="#why-is-my-job-pending" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Do I still have to do this? I used to just SSH in.
+        Why is my job pending?
       
     </span>
   </a>
@@ -845,10 +1173,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-only-need-cpu-not-a-gpu-does-this-apply-to-me" class="md-nav__link">
+  <a href="#can-i-ssh-directly-to-a-compute-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I only need CPU, not a GPU. Does this apply to me?
+        Can I SSH directly to a compute node?
       
     </span>
   </a>
@@ -856,10 +1184,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-june-30-deadline-about-do-i-need-to-move-my-data" class="md-nav__link">
+  <a href="#i-need-only-cpus-do-i-still-use-slurm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is the June 30 deadline about? Do I need to move my data?
+        I need only CPUs. Do I still use Slurm?
       
     </span>
   </a>
@@ -867,10 +1195,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-ask-for-more-than-one-gpu" class="md-nav__link">
+  <a href="#why-is-interactive-research-limited-to-an-hour" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I ask for more than one GPU?
+        Why is interactive research limited to an hour?
       
     </span>
   </a>
@@ -878,10 +1206,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-know-what-is-free-before-i-ask" class="md-nav__link">
+  <a href="#what-is-my-account-type" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I know what is free before I ask?
+        What is my account type?
       
     </span>
   </a>
@@ -889,10 +1217,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-job-is-stuck-in-pd-pending-what-does-that-mean" class="md-nav__link">
+  <a href="#what-course-account-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My job is stuck in PD (pending). What does that mean?
+        What course account should I use?
       
     </span>
   </a>
@@ -900,10 +1228,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-submit-a-job-and-come-back-later" class="md-nav__link">
+  <a href="#how-is-course-budget-charged" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Can I submit a job and come back later?
+        How is course budget charged?
       
     </span>
   </a>
@@ -911,10 +1239,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#can-i-still-use-vs-code-remote-ssh" class="md-nav__link">
+  <a href="#why-does-my-course-budget-look-unavailable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Can I still use VS Code Remote-SSH?
+        Why does my course budget look unavailable?
       
     </span>
   </a>
@@ -922,10 +1250,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-time-limit-is-too-short-for-my-training-run" class="md-nav__link">
+  <a href="#can-course-assignments-overlap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My time limit is too short for my training run.
+        Can course assignments overlap?
       
     </span>
   </a>
@@ -933,10 +1261,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#i-have-a-paper-or-demo-deadline-can-i-get-priority" class="md-nav__link">
+  <a href="#my-team-changed-what-happens-to-jobs-budget-and-submissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I have a paper or demo deadline. Can I get priority?
+        My team changed. What happens to jobs, budget, and submissions?
       
     </span>
   </a>
@@ -944,10 +1272,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#does-any-of-this-change-my-login-files-or-environment" class="md-nav__link">
+  <a href="#how-do-we-submit-course-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Does any of this change my login, files, or environment?
+        How do we submit course work?
       
     </span>
   </a>
@@ -955,10 +1283,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#where-did-my-gpu-go-when-my-allocation-ended" class="md-nav__link">
+  <a href="#how-do-i-request-a-course-extension-or-budget-exception" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where did my GPU go when my allocation ended?
+        How do I request a course extension or budget exception?
       
     </span>
   </a>
@@ -966,10 +1294,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#still-stuck" class="md-nav__link">
+  <a href="#where-do-files-live" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Still stuck?
+        Where do files live?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-slurm-email-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can Slurm email me?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-more-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use more GPUs?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-use-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I use VS Code?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-login-host-command-feels-throttled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A login-host command feels throttled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-do-i-ask-for-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where do I ask for help?
       
     </span>
   </a>
@@ -994,58 +1377,61 @@
 
 
 <h1 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h1>
-<p>Short answers to common questions. If you are still stuck, ask in <code>#server</code>.</p>
-<h3 id="my-job-was-killed-why">My job was killed. Why?<a class="headerlink" href="#my-job-was-killed-why" title="Permanent link">&para;</a></h3>
-<p>Run <code>sacct -j &lt;jobid&gt;</code> and read the <code>State</code> column.</p>
-<ul>
-<li><strong><code>TIMEOUT</code></strong> means you reached the <code>--time</code> limit. Request more time on the next run, up to three days in <code>main</code>.</li>
-<li><strong><code>OUT_OF_MEMORY</code></strong> means the job used more memory than it requested. Add <code>--mem=64G</code>, or whatever you need, or reduce the batch size.</li>
-<li><strong><code>FAILED</code></strong> means your program exited with an error. Check its output log.</li>
-<li><strong><code>CANCELLED</code></strong> means someone ran <code>scancel</code>. If it was not you, an admin may have cancelled it, which is rare and always explained.</li>
-</ul>
-<h3 id="do-i-still-have-to-do-this-i-used-to-just-ssh-in">Do I still have to do this? I used to just SSH in.<a class="headerlink" href="#do-i-still-have-to-do-this-i-used-to-just-ssh-in" title="Permanent link">&para;</a></h3>
-<p>SLURM is optional until June 30, and direct SSH continues to work through soft enforcement on July 1, so you can keep your current workflow for now. What begins on July 1 is that work you run inside an allocation gains time limits, fair-share scheduling, and, for GPU jobs, GPU isolation. At hard enforcement, on a date announced ahead of time, an allocation becomes required to use a compute node. Trying the new workflow now, while both still work, means no surprises later. See <a href="../slurm-transition/">About the transition</a>.</p>
-<h3 id="i-only-need-cpu-not-a-gpu-does-this-apply-to-me">I only need CPU, not a GPU. Does this apply to me?<a class="headerlink" href="#i-only-need-cpu-not-a-gpu-does-this-apply-to-me" title="Permanent link">&para;</a></h3>
-<p>Yes. SLURM schedules the whole compute node, not only its GPUs, so CPU-only work follows the same path. Leave off <code>--gres</code> and request cores and memory instead:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>salloc<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--mem<span class="o">=</span>32G<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00
+<h2 id="why-did-my-job-stop">Why did my job stop?<a class="headerlink" href="#why-did-my-job-stop" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span>--format<span class="o">=</span>JobID,State,Elapsed,MaxRSS,ReqTRES
 </code></pre></div>
-<p>You still receive a time limit and the same fair-share scheduling, and at hard enforcement you still need an allocation to use a node. The only GPU-specific piece is GPU isolation, which has nothing to apply to a job that requested no GPU.</p>
-<h3 id="what-is-the-june-30-deadline-about-do-i-need-to-move-my-data">What is the June 30 deadline about? Do I need to move my data?<a class="headerlink" href="#what-is-the-june-30-deadline-about-do-i-need-to-move-my-data" title="Permanent link">&para;</a></h3>
-<p>Yes, by Tuesday, June 30. The per-node home directories and the <code>/mnt/data1</code> data drive on the compute nodes are erased after June 30, ahead of soft enforcement on July 1. Copy anything you want to keep to the shared storage, then mark your name in the migration sheet. The full steps are on the <a href="../storage-migration/">Migrate your data</a> page. Shared storage has a 50 GB quota per user; if you need more, ask in <code>#server</code>.</p>
-<h3 id="how-do-i-ask-for-more-than-one-gpu">How do I ask for more than one GPU?<a class="headerlink" href="#how-do-i-ask-for-more-than-one-gpu" title="Permanent link">&para;</a></h3>
-<p><code>--gres=gpu:2</code> gives you both GPUs on a node. Each node has two GPUs, so two is the maximum on a single node. Multi-node GPU jobs are possible but uncommon here, so ask if you need one.</p>
-<h3 id="how-do-i-know-what-is-free-before-i-ask">How do I know what is free before I ask?<a class="headerlink" href="#how-do-i-know-what-is-free-before-i-ask" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sinfo<span class="w">            </span><span class="c1"># idle is free, mix is partly used, alloc is full</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>squeue<span class="w">           </span><span class="c1"># what is running and queued</span>
-</code></pre></div>
-<p>The <a href="/dashboard/">live cluster status dashboard</a> gives the same view of free GPUs, queue depth, and contention.</p>
-<h3 id="my-job-is-stuck-in-pd-pending-what-does-that-mean">My job is stuck in <code>PD</code> (pending). What does that mean?<a class="headerlink" href="#my-job-is-stuck-in-pd-pending-what-does-that-mean" title="Permanent link">&para;</a></h3>
-<p>Pending is normal. Run <code>squeue --me</code> and read the reason in parentheses.</p>
 <ul>
-<li><strong><code>Resources</code></strong> means the GPUs you asked for are busy, and you are next in line when they free up.</li>
-<li><strong><code>Priority</code></strong> means other jobs are ahead of you in the queue.</li>
-<li><strong><code>QOSMaxWallDurationPerJobLimit</code></strong> means you asked for more time than allowed. Resubmit with a shorter <code>--time</code>.</li>
+<li><code>TIMEOUT</code>: the job reached <code>--time</code>.</li>
+<li><code>OUT_OF_MEMORY</code>: it exceeded requested memory.</li>
+<li><code>FAILED</code>: the program exited with an error; inspect its output log.</li>
+<li><code>CANCELLED</code>: the user or an administrator cancelled it.</li>
+<li><code>PREEMPTED</code> or a requeued <code>scavenger</code> job: best-effort work yielded to higher-priority work.</li>
 </ul>
-<p><code>squeue --me --start</code> shows an estimated start time.</p>
-<h3 id="can-i-submit-a-job-and-come-back-later">Can I submit a job and come back later?<a class="headerlink" href="#can-i-submit-a-job-and-come-back-later" title="Permanent link">&para;</a></h3>
-<p>From July 1, yes. Batch submission with <code>sbatch</code> needs every home directory on the shared storage, so it switches on when soft enforcement begins, once the June 30 migration is complete. Until then, use <code>salloc</code> for everything. For a long run, hold the allocation in <code>tmux</code> so it survives a sleeping laptop or a dropped connection: run <code>salloc</code>, then <code>ssh &lt;node&gt;</code> from inside the tmux session, detach with <code>Ctrl-b d</code>, and reattach later with <code>tmux attach</code>.</p>
-<h3 id="can-i-still-use-vs-code-remote-ssh">Can I still use VS Code Remote-SSH?<a class="headerlink" href="#can-i-still-use-vs-code-remote-ssh" title="Permanent link">&para;</a></h3>
-<p>Yes. Allocate a node with <code>salloc</code>, then point VS Code Remote-SSH at that node. See the <a href="../vscode/">VS Code</a> page.</p>
-<h3 id="my-time-limit-is-too-short-for-my-training-run">My time limit is too short for my training run.<a class="headerlink" href="#my-time-limit-is-too-short-for-my-training-run" title="Permanent link">&para;</a></h3>
-<p>You have three options.</p>
-<ol>
-<li>Ask for more time up front, for example <code>--time=24:00:00</code>, up to three days in <code>main</code>.</li>
-<li>Submit the run as a batch job with <code>sbatch</code> so it runs unattended.</li>
-<li>Add checkpointing to your code so a job can resume where it left off. The sysadmin team is happy to help you set this up.</li>
-</ol>
-<h3 id="i-have-a-paper-or-demo-deadline-can-i-get-priority">I have a paper or demo deadline. Can I get priority?<a class="headerlink" href="#i-have-a-paper-or-demo-deadline-can-i-get-priority" title="Permanent link">&para;</a></h3>
-<p>Yes. Ask in <code>#server</code> and the sysadmin team can raise your queue priority for a set window so your jobs start sooner. This is a normal, supported part of how the cluster runs.</p>
-<h3 id="does-any-of-this-change-my-login-files-or-environment">Does any of this change my login, files, or environment?<a class="headerlink" href="#does-any-of-this-change-my-login-files-or-environment" title="Permanent link">&para;</a></h3>
-<p>No. You keep the same username and password, the same conda environments, containers, and tools, and the same home directory path and contents. Your home now lives on shared storage, which is why you need to <a href="../storage-migration/">migrate your data</a> off the old per-node disks by June 30. The only new step is requesting resources before you use a node, whether a GPU or just cores and memory.</p>
-<h3 id="where-did-my-gpu-go-when-my-allocation-ended">Where did my GPU go when my allocation ended?<a class="headerlink" href="#where-did-my-gpu-go-when-my-allocation-ended" title="Permanent link">&para;</a></h3>
-<p>It returned to the shared pool for the next person. Returning resources when your time is up is what keeps a free GPU available when you need one, rather than reserved and idle by someone who has walked away.</p>
-<h3 id="still-stuck">Still stuck?<a class="headerlink" href="#still-stuck" title="Permanent link">&para;</a></h3>
-<p>Ask in <code>#server</code>. No question is too basic.</p>
+<h2 id="why-is-my-job-pending">Why is my job pending?<a class="headerlink" href="#why-is-my-job-pending" title="Permanent link">&para;</a></h2>
+<p>Pending is normal. Run <code>squeue --me</code> and inspect the reason. <code>Resources</code> means the requested shape is busy; <code>Priority</code> means other work is ahead; <code>AssocGrpGRES</code> commonly means an account or course-holder GPU cap is in use. <code>squeue --me --start</code> is an estimate, not a guarantee.</p>
+<p>Sprocket’s <a href="/queue">Queue</a> and <a href="/usage">Usage</a> pages add current pressure, history, and evidence-qualified wait ranges.</p>
+<h2 id="can-i-ssh-directly-to-a-compute-node">Can I SSH directly to a compute node?<a class="headerlink" href="#can-i-ssh-directly-to-a-compute-node" title="Permanent link">&para;</a></h2>
+<p>Only while you hold an allocation on that node. Start with <code>salloc</code>, find the assigned node using <code>squeue --me</code>, and then SSH to it. Without an allocation, connect to <code>sprlab005</code> and submit work through Slurm.</p>
+<h2 id="i-need-only-cpus-do-i-still-use-slurm">I need only CPUs. Do I still use Slurm?<a class="headerlink" href="#i-need-only-cpus-do-i-still-use-slurm" title="Permanent link">&para;</a></h2>
+<p>Research accounts do:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>salloc<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--mem<span class="o">=</span>32G<span class="w"> </span>--time<span class="o">=</span><span class="m">1</span>:00:00
+</code></pre></div>
+<p>Course-only compute is GPU-budgeted and rejects CPU-only jobs. If a course assignment needs substantial CPU-only work, course staff must provide the intended workflow.</p>
+<h2 id="why-is-interactive-research-limited-to-an-hour">Why is interactive research limited to an hour?<a class="headerlink" href="#why-is-interactive-research-limited-to-an-hour" title="Permanent link">&para;</a></h2>
+<p>Interactive research runs on the high-turnover <code>debug</code> partition. Use it to develop and diagnose, then move unattended or longer work to <code>sbatch</code> on <code>main</code>. A course assignment has its own wall-time ceiling and budget; always request only the interactive time needed.</p>
+<h2 id="what-is-my-account-type">What is my account type?<a class="headerlink" href="#what-is-my-account-type" title="Permanent link">&para;</a></h2>
+<p>Sprocket’s Me and Course pages show the available role and course membership. Graduate and undergraduate research accounts use research QoS. A course-only account uses assignment budgets. A researcher enrolled in a course remains research by default and selects a course assignment account only for course work. See <a href="../accounts/">Accounts and access</a>.</p>
+<h2 id="what-course-account-should-i-use">What course account should I use?<a class="headerlink" href="#what-course-account-should-i-use" title="Permanent link">&para;</a></h2>
+<p>Copy <code>--account=&lt;assignment&gt;</code> from Sprocket’s Checkpoints page or run <code>mybudget</code>. When multiple assignments are open, the account is required. Do not guess a Slurm leaf account or copy another team’s value.</p>
+<h2 id="how-is-course-budget-charged">How is course budget charged?<a class="headerlink" href="#how-is-course-budget-charged" title="Permanent link">&para;</a></h2>
+<p>Requested GPUs × requested wall minutes is held when the job is submitted. After completion, actual elapsed GPU-minutes become consumed and unused held time becomes free again. Pending and running team jobs share the same holder pool. See <a href="../coursework/">Course workflow</a>.</p>
+<h2 id="why-does-my-course-budget-look-unavailable">Why does my course budget look unavailable?<a class="headerlink" href="#why-does-my-course-budget-look-unavailable" title="Permanent link">&para;</a></h2>
+<p>Sprocket intentionally fails closed when queue or accounting evidence is missing or stale. Wait briefly and refresh. If it persists, send Support the assignment, command, approximate time, and displayed source health. Do not attempt to route around the course account.</p>
+<h2 id="can-course-assignments-overlap">Can course assignments overlap?<a class="headerlink" href="#can-course-assignments-overlap" title="Permanent link">&para;</a></h2>
+<p>Yes. Each open assignment has a separate budget and account. Select which one pays for the job. The two-GPU holder/user ceiling spans assignments, so overlapping windows do not multiply concurrency.</p>
+<h2 id="my-team-changed-what-happens-to-jobs-budget-and-submissions">My team changed. What happens to jobs, budget, and submissions?<a class="headerlink" href="#my-team-changed-what-happens-to-jobs-budget-and-submissions" title="Permanent link">&para;</a></h2>
+<p>An instructor previews and applies the exception in Sprocket. Consumed minutes, existing job holds, closed history, and artifacts remain with their original holder. Staff explicitly choose what happens to free budget. Open confirmations affected by membership may be invalidated so the resulting team confirms a coherent revision.</p>
+<h2 id="how-do-we-submit-course-work">How do we submit course work?<a class="headerlink" href="#how-do-we-submit-course-work" title="Permanent link">&para;</a></h2>
+<p>Declare an allowed GitHub revision or a path inside your assigned course workspace in Checkpoints. Sprocket resolves GitHub input to an immutable commit and snapshots path input as an immutable ZFS revision. Path submissions receive an immediate structural result and, when configured by staff, an instructor verifier result. Review the exact revision; every required team member confirms it. Confirmation waits for trusted zero active jobs and closes the assignment window when final.</p>
+<h2 id="how-do-i-request-a-course-extension-or-budget-exception">How do I request a course extension or budget exception?<a class="headerlink" href="#how-do-i-request-a-course-extension-or-budget-exception" title="Permanent link">&para;</a></h2>
+<p>Use <strong>Request an adjustment</strong> on the relevant checkpoint. Attach the required private evidence there, not to ordinary Support. Course staff decide the academic exception and Sprocket records the resulting window and budget change.</p>
+<h2 id="where-do-files-live">Where do files live?<a class="headerlink" href="#where-do-files-live" title="Permanent link">&para;</a></h2>
+<p>Research homes are under <code>/spr-storage/home/&lt;username&gt;</code> with the account-type quota shown in Sprocket. Course-only personal work is under <code>/course/&lt;NetID&gt;</code> with a standard 10 GiB baseline; team workspaces normally provide 50 GiB under <code>/course/groups/&lt;course&gt;/&lt;team&gt;</code>. Published checkpoint policy can grow course allocations, and they do not shrink automatically. See <a href="../storage/">Storage</a> for the complete map.</p>
+<h2 id="can-slurm-email-me">Can Slurm email me?<a class="headerlink" href="#can-slurm-email-me" title="Permanent link">&para;</a></h2>
+<p>Yes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sbatch<span class="w"> </span>--mail-type<span class="o">=</span>BEGIN,END,FAIL,TIME_LIMIT<span class="w"> </span>--mail-user<span class="o">=</span>&lt;netid&gt;<span class="w"> </span>train.sh
+</code></pre></div>
+<p>A bare NetID goes to <code>&lt;netid&gt;@illinois.edu</code>. The sending address is not monitored for replies.</p>
+<h2 id="can-i-use-more-gpus">Can I use more GPUs?<a class="headerlink" href="#can-i-use-more-gpus" title="Permanent link">&para;</a></h2>
+<p>Research limits depend on QoS: 4 for <code>normal</code> or <code>expedite</code>, 2 for <code>undergrad</code>, and up to 8 for requeueable <code>scavenger</code>. Each node has two GPUs, so requests above two span nodes and need suitable distributed code.</p>
+<p>Course jobs use one node and at most two GPUs. The checkpoint may allow only one, and the requested cost must fit the assignment budget.</p>
+<h2 id="can-i-use-vs-code">Can I use VS Code?<a class="headerlink" href="#can-i-use-vs-code" title="Permanent link">&para;</a></h2>
+<p>Yes. Attach VS Code Remote-SSH to <code>sprlab005</code>, edit persistent files there, and submit jobs from its terminal. Do not depend on an editor attached to a temporary compute allocation. See <a href="../vscode/">VS Code</a>.</p>
+<h2 id="a-login-host-command-feels-throttled">A login-host command feels throttled<a class="headerlink" href="#a-login-host-command-feels-throttled" title="Permanent link">&para;</a></h2>
+<p>Ordinary users are capped at about eight CPUs on <code>sprlab005</code> so one local process cannot starve everybody’s shell. Move heavy compilation, preprocessing, extraction, or training into a Slurm job.</p>
+<h2 id="where-do-i-ask-for-help">Where do I ask for help?<a class="headerlink" href="#where-do-i-ask-for-help" title="Permanent link">&para;</a></h2>
+<p>Use <a href="/support">Sprocket Support</a> for technical failures and include exact commands, job IDs, times, and errors. Use <a href="/requests">Resource requests</a> for reviewed research resources. Course assignment rules, grading, teams, and academic exceptions belong with course staff and the course adjustment flow.</p>
 
 
 
@@ -1083,7 +1469,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../vscode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: VS Code">
+          <a href="../agentic-helper/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Agentic coding helper">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1093,27 +1479,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                VS Code
+                Agentic coding helper
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../slurm-transition/" class="md-footer__link md-footer__link--next" aria-label="Next: About the transition">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                About the transition
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -1139,11 +1509,13 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

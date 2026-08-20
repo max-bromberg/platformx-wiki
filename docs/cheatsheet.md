@@ -1,126 +1,125 @@
 # Command reference
 
-A brief lookup for day-to-day use. The [Running jobs](running-jobs.md) page explains these in context.
+Use these commands from `sprlab005`. See [Running jobs](running-jobs.md) for the workflow and [Course workflow](coursework.md) for assignment budgets.
 
-!!! warning "Migrate your data by June 30"
-    The per-node home directories and `/mnt/data1` are erased after June 30. [Move your data to shared storage first](storage-migration.md).
+## Interactive work
 
-## Request a node
-
-Request a GPU and a time limit, then connect to the node you are given:
+Research account:
 
 ```bash
-salloc --gres=gpu:1 --time=4:00:00            # 1 GPU for 4 hours, default partition (main)
-salloc --gres=gpu:2 --time=2:00:00            # both GPUs on a node
-salloc --gres=gpu:1 -p debug --time=0:30:00   # quick test on the debug partition
+salloc --gres=gpu:1 --time=1:00:00
+salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-For CPU-only work, request cores and memory and leave off `--gres`:
+Course work:
 
 ```bash
-salloc --cpus-per-task=8 --mem=32G --time=4:00:00
+salloc --account=<assignment> --gres=gpu:1 --time=0:30:00
+mybudget
 ```
 
-After `salloc` returns, connect to the assigned node and work normally:
+Research interactive work routes to `debug` and is capped at one hour. Course work routes through its assignment on `main`; its checkpoint controls the maximum and always requires a GPU.
+
+After the allocation starts:
 
 ```bash
-ssh <node>        # for example, sprc01
-nvidia-smi        # the GPUs available to you
+squeue --me
+ssh <assigned-node>
+nvidia-smi
 ```
 
-## Long runs
-
-Keep an interactive long run alive in `tmux` so it survives a dropped connection:
+## Batch work
 
 ```bash
-tmux                                   # start tmux on the login node
-salloc --gres=gpu:1 --time=24:00:00    # hold the allocation
-ssh <node>                             # detach with Ctrl-b d, reattach with tmux attach
+sbatch --gres=gpu:1 --time=12:00:00 train.sh
+sbatch --account=<assignment> --gres=gpu:1 --time=1:00:00 course.sh
 ```
 
-## Submit a batch job
-
-Batch submission becomes available at soft enforcement on July 1, once the June 30 storage migration is complete. Until then, use `salloc` in `tmux` for long runs.
-
-```bash
-sbatch --gres=gpu:1 --time=12:00:00 train.sh   # queue a job, then walk away
-squeue --me                                    # watch it
-```
-
-A batch script sets its own options with `#SBATCH` lines:
+A batch script can carry the options itself:
 
 ```bash
 #!/bin/bash
+#SBATCH --account=<assignment>     # course only; omit for research
 #SBATCH --gres=gpu:1
-#SBATCH --time=12:00:00
+#SBATCH --time=1:00:00
 #SBATCH --job-name=train
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=<netid>
 srun python train.py
 ```
 
-## Watch your jobs
+## Watch the cluster
 
 ```bash
-squeue --me                 # your queued and running jobs
-squeue                      # everyone's jobs
-squeue --me --start         # estimated start time for pending jobs
-scontrol show job <jobid>   # full detail on one job
+squeue --me
+squeue
+squeue --me --start
+sinfo
+sinfo -N -l
+scontrol show job <jobid>
 ```
 
-In the `ST` column, `R` means running and `PD` means pending. For a pending job, the `NODELIST(REASON)` column gives the reason: `Resources` means the GPUs you asked for are busy, and `Priority` means other jobs are ahead of you.
+Common pending reasons:
 
-## See what is free
+| Reason | Meaning |
+| --- | --- |
+| `Resources` | The requested shape is not free. |
+| `Priority` | Other pending work is ahead. |
+| `AssocGrpGRES` | An account or holder GPU cap is already in use. |
+| `QOSMaxWallDurationPerJobLimit` | The requested time exceeds the selected tier. |
+| `Reservation` or `ReqNodeNotAvail` | The job is waiting on an applicable capacity window or node. |
+
+Sprocket’s [Queue](/queue) and [Usage](/usage) pages provide a friendlier view.
+
+## Stop jobs
 
 ```bash
-sinfo                       # partitions and node states
-sinfo -N -l                 # one line per node, with detail
+scancel <jobid>
+scancel --me
 ```
 
-A node state of `idle` is free, `mix` is partly used, and `alloc` is fully allocated.
-
-## Stop a job
+## Inspect completed work
 
 ```bash
-scancel <jobid>             # cancel one job
-scancel --me                # cancel all of your jobs
+sacct -j <jobid>
+sacct -u <username> --starttime 2026-08-01
+sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES,Account
 ```
-
-## After a job ends
-
-```bash
-sacct -j <jobid>                                   # what happened to a job
-sacct -u <you> --starttime 2026-06-01              # your job history
-sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
-```
-
-Values in the `State` column worth knowing:
 
 | State | Meaning |
-|---|---|
-| `COMPLETED` | Finished cleanly (exit 0). |
-| `TIMEOUT` | Reached the `--time` limit. Request more time on the next run. |
-| `FAILED` | The program exited with a non-zero status. |
-| `OUT_OF_MEMORY` | Used more memory than requested. Raise `--mem` or use less. |
-| `CANCELLED` | Stopped by `scancel`, by you or by an admin. |
+| --- | --- |
+| `COMPLETED` | Program exited successfully. |
+| `TIMEOUT` | Job reached its requested wall time. |
+| `FAILED` | Program exited non-zero. |
+| `OUT_OF_MEMORY` | Job exceeded requested memory. |
+| `CANCELLED` | User or an administrator cancelled the job. |
+| `PREEMPTED` | Best-effort work yielded to higher-priority work. |
 
 ## Common options
 
 | Option | Purpose |
-|---|---|
-| `--gres=gpu:1` | Request 1 GPU (use `:2` for both on a node). |
-| `--time=HH:MM:SS` | Wall-clock limit. |
-| `--partition=<name>` (`-p`) | Choose a partition. The default is `main`. |
-| `--cpus-per-task=N` (`-c`) | Request N CPU cores. |
-| `--mem=32G` | Request memory. |
-| `--qos=expedite` | Use a granted deadline-priority window (ask in `#server`). |
-| `--job-name=<name>` (`-J`) | Label your job. |
+| --- | --- |
+| `--gres=gpu:N` | Request whole GPUs. Each node has two. |
+| `--time=HH:MM:SS` | Maximum wall time. Request what the job realistically needs. |
+| `--cpus-per-task=N` or `-c N` | Request Slurm CPUs. |
+| `--mem=32G` | Request job memory. |
+| `--account=<assignment>` | Charge course work to the assignment shown in Sprocket. Do not use for ordinary research. |
+| `--qos=scavenger` | Restartable, lowest-priority research batch work. |
+| `--qos=expedite` | Research deadline work during an approved grant. |
+| `--mail-type=END,FAIL` | Select email events. Also accepts `BEGIN`, `TIME_LIMIT`, and `ALL`. |
+| `--mail-user=<netid>` | Deliver to the university address for a bare NetID. |
+| `--job-name=<name>` or `-J <name>` | Give the job a readable name. |
 
-## Partitions
+Do not normally set a partition. Slurm routes research interactive work to `debug`, research batch to `main`, and course work to the appropriate course reservation on `main`.
 
-| Partition | Maximum time | Use it for |
-|---|---|---|
-| `main` (default) | 3 days | All normal work. |
-| `debug` | 1 hour | Short tests with quick turnaround. |
+## Course-specific constraints
+
+- Use the assignment account from Checkpoints; it is required when assignments overlap.
+- GPU-minute cost is requested GPUs × requested minutes.
+- CPU-only course jobs and job arrays are rejected.
+- Course jobs use one node and at most two GPUs, 64 CPUs, and 512 GB; a checkpoint may be stricter.
+- Cancel and resubmit to change resource or placement fields on a queued course job.
 
 ## Need help?
 
-Ask in `#server`. If you are on a deadline, ask there about a priority window.
+Use [Sprocket Support](/support) and include the command, job ID, time, and exact error. Research resource requests go through [Resource requests](/requests); course budget and deadline exceptions use the adjustment workflow on Checkpoints.

@@ -1,10 +1,9 @@
 site_name: Systems Platform and Intelligence Lab
-site_description: Documentation for the sprc compute cluster — logging in, running jobs, storage, and the SLURM transition.
+site_description: Documentation for the sprc compute cluster — logging in, running jobs on SLURM, storage, and sharing the GPUs fairly.
 site_url: http://sprlab005.csl.illinois.edu/
 
 theme:
   name: material
-  custom_dir: overrides   # enables overrides/main.html (announcement bar -> /dashboard)
   palette:
     - scheme: default
       primary: deep purple
@@ -19,6 +18,8 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
+    - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.indexes
     - navigation.top
@@ -26,21 +27,28 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
     - content.tabs.link
 
 nav:
   - Home: index.md
-  - Migrate your data: storage-migration.md
-  - Running jobs:
-      - running-jobs.md
+  - Start here:
+      - Accounts & access: accounts.md
+      - Running jobs: running-jobs.md
       - Command reference: cheatsheet.md
+  - Scheduling policy:
+      - Priority, capacity & fair sharing: priority.md
+  - Course students:
+      - Course workflow: coursework.md
+  - Storage & files:
+      - Storage: storage.md
+      - Workflows & file management: workflows.md
+  - Tools:
+      - Sprocket portal: portal.md
       - VS Code: vscode.md
+      - Agentic coding helper: agentic-helper.md
   - FAQ: faq.md
-  - About the transition: slurm-transition.md
-  - Sysadmin reference:
-      - admins/index.md
-      - New user provisioning: admins/provisioning-new-users.md
 
 markdown_extensions:
   - admonition

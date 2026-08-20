@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation for the sprc compute cluster — logging in, running jobs, storage, and the SLURM transition.">
+        <meta name="description" content="Documentation for the sprc compute cluster — logging in, running jobs on SLURM, storage, and sharing the GPUs fairly.">
       
       
       
-        <link rel="canonical" href="http://sprlab005.csl.illinois.edu/slurm-transition/">
+        <link rel="canonical" href="http://sprlab005.csl.illinois.edu/storage/">
       
       
-        <link rel="prev" href="../faq/">
+        <link rel="prev" href="../coursework/">
       
       
-        <link rel="next" href="../admins/">
+        <link rel="next" href="../workflows/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>About the transition - Systems Platform and Intelligence Lab</title>
+        <title>Storage - Systems Platform and Intelligence Lab</title>
       
     
     
@@ -78,23 +78,12 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-the-transition" class="md-skip">
+        <a href="#storage" class="md-skip">
           Skip to content
         </a>
       
     </div>
     <div data-md-component="announce">
-      
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-  🖥️ <strong>Live cluster status:</strong>
-  <a href="/dashboard/">open the dashboard&nbsp;&#8599;</a>
-
-          </div>
-          
-        </aside>
       
     </div>
     
@@ -125,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              About the transition
+              Storage
             
           </span>
         </div>
@@ -181,6 +170,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
@@ -275,33 +269,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../storage-migration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Migrate your data
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
     
     
       
@@ -319,17 +286,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Running jobs
+    Start here
   
 
     
@@ -340,16 +307,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Running jobs
+    Start here
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accounts & access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -407,6 +402,521 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduling policy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Scheduling policy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../priority/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Priority, capacity & fair sharing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course students
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Course students
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coursework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage & files
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage & files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#research-home-spr-storagehome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research home — /spr-storage/home
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-storage-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Course storage — /course
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projects — /projects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#large-files-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large files — /data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-model-cache-huggingface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared model cache — /huggingface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fast-working-data-fast-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast working data — /fast-data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-placement-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick placement guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotas-and-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quotas and requests
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows & file management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sprocket portal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
               
                 
   
@@ -422,6 +932,34 @@
     
   
     VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentic-helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic coding helper
   
 
     
@@ -469,256 +1007,6 @@
   
 
     
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    About the transition
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    About the transition
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-the-cluster-is-changing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why the cluster is changing
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-changes-for-you" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What changes for you
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-timeline" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The timeline
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-soft-enforcement-means" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What soft enforcement means
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deadlines-are-protected" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deadlines are protected
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#try-it-now" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Try it now
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Questions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../admins/" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sysadmin reference
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Sysadmin reference
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../admins/provisioning-new-users/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    New user provisioning
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -746,10 +1034,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-the-cluster-is-changing" class="md-nav__link">
+  <a href="#research-home-spr-storagehome" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why the cluster is changing
+        Research home — /spr-storage/home
       
     </span>
   </a>
@@ -757,10 +1045,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-changes-for-you" class="md-nav__link">
+  <a href="#course-storage-course" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What changes for you
+        Course storage — /course
       
     </span>
   </a>
@@ -768,10 +1056,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-timeline" class="md-nav__link">
+  <a href="#projects-projects" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The timeline
+        Projects — /projects
       
     </span>
   </a>
@@ -779,10 +1067,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-soft-enforcement-means" class="md-nav__link">
+  <a href="#large-files-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What soft enforcement means
+        Large files — /data
       
     </span>
   </a>
@@ -790,10 +1078,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deadlines-are-protected" class="md-nav__link">
+  <a href="#shared-model-cache-huggingface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deadlines are protected
+        Shared model cache — /huggingface
       
     </span>
   </a>
@@ -801,10 +1089,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#try-it-now" class="md-nav__link">
+  <a href="#fast-working-data-fast-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Try it now
+        Fast working data — /fast-data
       
     </span>
   </a>
@@ -812,10 +1100,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
+  <a href="#quick-placement-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Questions
+        Quick placement guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotas-and-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quotas and requests
       
     </span>
   </a>
@@ -839,76 +1138,79 @@
 
 
 
-<h1 id="about-the-transition">About the transition<a class="headerlink" href="#about-the-transition" title="Permanent link">&para;</a></h1>
-<p>This page explains why the cluster is moving to SLURM, what changes for you, and when each stage takes effect.</p>
-<div class="admonition danger">
-<p class="admonition-title">First, migrate your data by Tuesday, June 30</p>
-<p>Before anything else, the per-node home directories and the <code>/mnt/data1</code> data drive on the compute nodes are erased after June 30. Move your work to the shared storage now. See <a href="../storage-migration/">Migrate your data</a>.</p>
-</div>
-<h2 id="why-the-cluster-is-changing">Why the cluster is changing<a class="headerlink" href="#why-the-cluster-is-changing" title="Permanent link">&para;</a></h2>
-<p>The sprc cluster has four machines and eight high-end GPUs shared across the whole lab. Until now, nothing managed who used what, which led to three recurring problems.</p>
-<ol>
-<li><strong>GPUs held but not used.</strong> Someone starts a process, then leaves, and the GPU stays reserved and idle while others wait for it.</li>
-<li><strong>No fairness.</strong> Someone who has already used the cluster heavily this week has the same chance at the next free GPU as someone who has not touched it.</li>
-<li><strong>No visibility.</strong> Because nothing recorded usage, the lab could not answer basic questions such as how busy the cluster really is, or whether it needs more hardware.</li>
-</ol>
-<p>SLURM addresses all three. It is the scheduler used by most university HPC clusters, so it is well understood and well supported.</p>
-<h2 id="what-changes-for-you">What changes for you<a class="headerlink" href="#what-changes-for-you" title="Permanent link">&para;</a></h2>
-<p>The one real change is that you request the resources you need before you use a compute node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>salloc<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00<span class="w">              </span><span class="c1"># a GPU</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>salloc<span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">8</span><span class="w"> </span>--mem<span class="o">=</span>32G<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00<span class="w">   </span><span class="c1"># CPU cores and memory, no GPU</span>
+<h1 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h1>
+<p>Storage depends on account type and purpose. Research users have shared home and research data tiers. Course-only students receive bounded course storage, and team checkpoints can add a shared team workspace.</p>
+<h2 id="research-home-spr-storagehome">Research home — <code>/spr-storage/home</code><a class="headerlink" href="#research-home-spr-storagehome" title="Permanent link">&para;</a></h2>
+<p>A research home is mounted at <code>/spr-storage/home/&lt;username&gt;</code> on the login host and every compute node. It has an account-type quota and is appropriate for code, configuration, conda environments, and results you need to keep.</p>
+<p>Check usage in Sprocket’s <strong>Me</strong> page and from the shell:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>du<span class="w"> </span>-sh<span class="w"> </span>/spr-storage/home/&lt;username&gt;
 </code></pre></div>
-<p>Everything else stays the same. You keep your login and password, your home directory and files (once they are on the shared storage), your code, conda environments, and containers, and your editors and tools, including VS Code Remote-SSH and tmux.</p>
-<p>Two habits are new. The first is time limits: a four-hour request ends after four hours, so for longer work you ask for more time up front and hold the allocation in <code>tmux</code> so it survives a disconnect. The second is that resources return to the pool when your time is up, which is what makes a free GPU available when you need one.</p>
-<p>This applies to all compute-node work. CPU-only jobs go through SLURM the same way GPU jobs do, with the same allocations, time limits, and fair-share scheduling. The only GPU-specific piece is GPU isolation, which simply has nothing to apply to a job that requested no GPU.</p>
-<h2 id="the-timeline">The timeline<a class="headerlink" href="#the-timeline" title="Permanent link">&para;</a></h2>
-<p>The dates are fixed through soft enforcement. Hard enforcement follows later, on a date announced ahead of time.</p>
+<p>Large datasets, shared project trees, model weights, and temporary high-I/O working sets belong on the tiers below.</p>
+<h2 id="course-storage-course">Course storage — <code>/course</code><a class="headerlink" href="#course-storage-course" title="Permanent link">&para;</a></h2>
+<p>A course-only student receives a normal Unix home backed by its own ZFS dataset at <code>/course/&lt;NetID&gt;</code>, rather than a research home under <code>/spr-storage/home</code>. It starts with a 10 GiB allocation, mode <code>0700</code>, and remains personal even after teams form. Both the dataset quota and referenced-data quota are set to the same boundary, so retained immutable submission snapshots cannot grow outside the approved allocation.</p>
+<p>A team checkpoint can create a shared workspace at:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/course/groups/&lt;course&gt;/&lt;team&gt;
+</code></pre></div>
+<p>The standard team quota is 50 GB. Checkpoint policy can request more space, and reconciliation never lowers a live quota below current usage. Only current team members receive the team group identity. Team changes preserve existing bytes and history rather than silently moving or deleting data.</p>
+<p>A researcher who is also enrolled in a course keeps the existing research UID and passwd home. The
+research home remains <code>$HOME</code>; Sprocket also provides an isolated <code>/course/&lt;NetID&gt;</code> personal
+coursework workspace for individual path submissions, plus the team workspace needed for team
+checkpoints. The course workspace does not create a second Unix identity or replace the research
+home.</p>
+<h2 id="projects-projects">Projects — <code>/projects</code><a class="headerlink" href="#projects-projects" title="Permanent link">&para;</a></h2>
+<p><code>/projects</code> is research group storage for shared code, source trees, package installations, and datasets containing many small files. Directories are group-owned and carry an aggregate project quota rather than a per-person quota. Request a project directory or membership through <a href="/requests">Resource requests</a>.</p>
+<p>Course students should not assume they can use <code>/projects</code>; use the course workspace unless course staff explicitly provide another location.</p>
+<h2 id="large-files-data">Large files — <code>/data</code><a class="headerlink" href="#large-files-data" title="Permanent link">&para;</a></h2>
+<p><code>/data</code> is for large single files such as checkpoints, archives, and compressed shards. Research users can organize their own directory, commonly <code>/data/&lt;username&gt;</code>, with a standard 50 GB per-user quota across files they own.</p>
+<p>Course-only accounts should use assigned course storage unless course staff explicitly publish a course data location.</p>
+<h2 id="shared-model-cache-huggingface">Shared model cache — <code>/huggingface</code><a class="headerlink" href="#shared-model-cache-huggingface" title="Permanent link">&para;</a></h2>
+<p>The SSD-backed <code>/huggingface</code> cache provides one warm copy of commonly used Hugging Face models. <code>HF_HOME</code> and <code>HF_HUB_CACHE</code> are configured cluster-wide, so ordinary <code>transformers</code>, <code>datasets</code>, and <code>huggingface_hub</code> use it automatically.</p>
+<p>The cache is shared. Do not delete or rewrite another user’s cached material, and do not create duplicate model caches in personal home unless a reproducibility requirement genuinely needs one.</p>
+<p>Course staff may publish a more specific course model-cache convention; follow that instruction when present.</p>
+<h2 id="fast-working-data-fast-data">Fast working data — <code>/fast-data</code><a class="headerlink" href="#fast-working-data-fast-data" title="Permanent link">&para;</a></h2>
+<p><code>/fast-data</code> is SSD-backed shared scratch for the hot working set of a running research job. It has a standard 100 GB per-user quota. Stage frequently read or written data there, run against the staged copy, copy durable results back, and clean up.</p>
+<p>It is working space, not the only copy of an artifact. It is also shared across nodes, so performance can still vary under contention.</p>
+<p>Course-only students should use it only when course staff explicitly authorize a workflow and location; course storage limits remain the default boundary.</p>
+<h2 id="quick-placement-guide">Quick placement guide<a class="headerlink" href="#quick-placement-guide" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Stage</th>
-<th>When</th>
-<th>What you notice</th>
+<th>Material</th>
+<th>Research account</th>
+<th>Course-only account</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Optional period and data migration</td>
-<td>now to June 30</td>
-<td>SLURM is live to try with <code>salloc</code>, and your direct-SSH workflow still works. Move your data to the shared storage before June 30. See <a href="../storage-migration/">Migrate your data</a>.</td>
+<td>Personal code and durable results</td>
+<td><code>/spr-storage/home/&lt;username&gt;</code></td>
+<td><code>/course/&lt;NetID&gt;</code></td>
 </tr>
 <tr>
-<td>Data wipe</td>
-<td>after June 30</td>
-<td>The per-node home directories and <code>/mnt/data1</code> drives are erased.</td>
+<td>Team code and shared results</td>
+<td><code>/projects/&lt;project&gt;</code></td>
+<td><code>/course/groups/&lt;course&gt;/&lt;team&gt;</code></td>
 </tr>
 <tr>
-<td>Soft enforcement</td>
-<td>July 1</td>
-<td>Work inside an allocation gains time limits, fair-share scheduling, and GPU isolation, and <code>sbatch</code> becomes available. Direct SSH still works, so try the new workflow and report any issues.</td>
+<td>Large checkpoints or archives</td>
+<td><code>/data/&lt;username&gt;</code></td>
+<td>Assigned course or team workspace</td>
 </tr>
 <tr>
-<td>Hard enforcement</td>
-<td>to be announced</td>
-<td>An allocation is required to use a compute node. Direct SSH without one is declined, with sysadmin accounts excepted.</td>
+<td>Shared Hugging Face models</td>
+<td><code>/huggingface</code></td>
+<td>Course-published cache convention</td>
+</tr>
+<tr>
+<td>Temporary hot working set</td>
+<td><code>/fast-data</code></td>
+<td>Only when course staff authorize it</td>
 </tr>
 </tbody>
 </table>
-<h2 id="what-soft-enforcement-means">What soft enforcement means<a class="headerlink" href="#what-soft-enforcement-means" title="Permanent link">&para;</a></h2>
-<p>From July 1, work you run inside an allocation is bounded. If you use <code>salloc</code> or <code>sbatch</code>, the job receives time limits and fair-share scheduling, where queue order reflects recent usage, and a GPU job also receives GPU isolation, so it sees only the GPUs it reserved. CPU-only jobs receive the time limits and fair-share scheduling as well.</p>
-<p>Batch submission with <code>sbatch</code> becomes available on July 1, once every home directory is on the shared storage.</p>
-<p>Direct SSH still works during this period. You can connect to a compute node as before, with or without an allocation, since nothing is blocked yet. Use the optional period to try the allocation-based workflow and report any issues so the sysadmin team can resolve them before hard enforcement.</p>
-<h2 id="deadlines-are-protected">Deadlines are protected<a class="headerlink" href="#deadlines-are-protected" title="Permanent link">&para;</a></h2>
-<p>Fair scheduling does not override real deadlines. If you have a paper or demo, ask in <code>#server</code> and the sysadmin team can raise your queue priority for a set window so your jobs start sooner. There is a supported priority path that the sysadmins control.</p>
-<h2 id="try-it-now">Try it now<a class="headerlink" href="#try-it-now" title="Permanent link">&para;</a></h2>
-<p>The best way to be ready is to use SLURM during the optional period, while your old workflow is still available:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>salloc<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00<span class="w">     </span><span class="c1"># request a GPU, then ssh to your node</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>squeue<span class="w"> </span>--me<span class="w">                            </span><span class="c1"># your jobs</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sinfo<span class="w">                                  </span><span class="c1"># what is free</span>
-</code></pre></div>
-<p>See the <a href="../cheatsheet/">Command reference</a> for the full set of commands, and the <a href="../faq/">FAQ</a> for common questions.</p>
-<h2 id="questions">Questions<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h2>
-<p>Ask in <code>#server</code>. If you are unsure how to move your specific workflow onto SLURM, describe it in the channel and the sysadmin team will help.</p>
+<h2 id="quotas-and-requests">Quotas and requests<a class="headerlink" href="#quotas-and-requests" title="Permanent link">&para;</a></h2>
+<p>Sprocket’s Me page reports observed home usage and quota when fresh telemetry is available. An unavailable reading is not proof of unlimited space.</p>
+<p>Research users request additional storage through <a href="/requests">Resource requests</a>. Course checkpoint storage and team workspaces are instructor-configured; use course staff or Sprocket Support when the assigned space is missing or incorrect.</p>
 
 
 
@@ -946,7 +1248,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../faq/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FAQ">
+          <a href="../coursework/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Course workflow">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -956,20 +1258,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                FAQ
+                Course workflow
               </div>
             </div>
           </a>
         
         
           
-          <a href="../admins/" class="md-footer__link md-footer__link--next" aria-label="Next: Sysadmin reference">
+          <a href="../workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Workflows &amp; file management">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Sysadmin reference
+                Workflows & file management
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1002,11 +1304,13 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

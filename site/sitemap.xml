@@ -2,38 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://sprlab005.csl.illinois.edu/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>http://sprlab005.csl.illinois.edu/accounts/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>http://sprlab005.csl.illinois.edu/agentic-helper/</loc>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
          <loc>http://sprlab005.csl.illinois.edu/cheatsheet/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>http://sprlab005.csl.illinois.edu/coursework/</loc>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
          <loc>http://sprlab005.csl.illinois.edu/faq/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>http://sprlab005.csl.illinois.edu/portal/</loc>
+         <lastmod>2026-08-20</lastmod>
+    </url>
+    <url>
+         <loc>http://sprlab005.csl.illinois.edu/priority/</loc>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
          <loc>http://sprlab005.csl.illinois.edu/running-jobs/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
-         <loc>http://sprlab005.csl.illinois.edu/slurm-transition/</loc>
-         <lastmod>2026-06-25</lastmod>
-    </url>
-    <url>
-         <loc>http://sprlab005.csl.illinois.edu/storage-migration/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <loc>http://sprlab005.csl.illinois.edu/storage/</loc>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
          <loc>http://sprlab005.csl.illinois.edu/vscode/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <lastmod>2026-08-20</lastmod>
     </url>
     <url>
-         <loc>http://sprlab005.csl.illinois.edu/admins/</loc>
-         <lastmod>2026-06-25</lastmod>
-    </url>
-    <url>
-         <loc>http://sprlab005.csl.illinois.edu/admins/provisioning-new-users/</loc>
-         <lastmod>2026-06-25</lastmod>
+         <loc>http://sprlab005.csl.illinois.edu/workflows/</loc>
+         <lastmod>2026-08-20</lastmod>
     </url>
 </urlset>

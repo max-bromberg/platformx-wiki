@@ -1,85 +1,103 @@
 # FAQ
 
-Short answers to common questions. If you are still stuck, ask in `#server`.
+## Why did my job stop?
 
-### My job was killed. Why?
-
-Run `sacct -j <jobid>` and read the `State` column.
-
--   **`TIMEOUT`** means you reached the `--time` limit. Request more time on the next run, up to three days in `main`.
--   **`OUT_OF_MEMORY`** means the job used more memory than it requested. Add `--mem=64G`, or whatever you need, or reduce the batch size.
--   **`FAILED`** means your program exited with an error. Check its output log.
--   **`CANCELLED`** means someone ran `scancel`. If it was not you, an admin may have cancelled it, which is rare and always explained.
-
-### Do I still have to do this? I used to just SSH in.
-
-SLURM is optional until June 30, and direct SSH continues to work through soft enforcement on July 1, so you can keep your current workflow for now. What begins on July 1 is that work you run inside an allocation gains time limits, fair-share scheduling, and, for GPU jobs, GPU isolation. At hard enforcement, on a date announced ahead of time, an allocation becomes required to use a compute node. Trying the new workflow now, while both still work, means no surprises later. See [About the transition](slurm-transition.md).
-
-### I only need CPU, not a GPU. Does this apply to me?
-
-Yes. SLURM schedules the whole compute node, not only its GPUs, so CPU-only work follows the same path. Leave off `--gres` and request cores and memory instead:
+Run:
 
 ```bash
-salloc --cpus-per-task=8 --mem=32G --time=4:00:00
+sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
 ```
 
-You still receive a time limit and the same fair-share scheduling, and at hard enforcement you still need an allocation to use a node. The only GPU-specific piece is GPU isolation, which has nothing to apply to a job that requested no GPU.
+- `TIMEOUT`: the job reached `--time`.
+- `OUT_OF_MEMORY`: it exceeded requested memory.
+- `FAILED`: the program exited with an error; inspect its output log.
+- `CANCELLED`: the user or an administrator cancelled it.
+- `PREEMPTED` or a requeued `scavenger` job: best-effort work yielded to higher-priority work.
 
-### What is the June 30 deadline about? Do I need to move my data?
+## Why is my job pending?
 
-Yes, by Tuesday, June 30. The per-node home directories and the `/mnt/data1` data drive on the compute nodes are erased after June 30, ahead of soft enforcement on July 1. Copy anything you want to keep to the shared storage, then mark your name in the migration sheet. The full steps are on the [Migrate your data](storage-migration.md) page. Shared storage has a 50 GB quota per user; if you need more, ask in `#server`.
+Pending is normal. Run `squeue --me` and inspect the reason. `Resources` means the requested shape is busy; `Priority` means other work is ahead; `AssocGrpGRES` commonly means an account or course-holder GPU cap is in use. `squeue --me --start` is an estimate, not a guarantee.
 
-### How do I ask for more than one GPU?
+Sprocket’s [Queue](/queue) and [Usage](/usage) pages add current pressure, history, and evidence-qualified wait ranges.
 
-`--gres=gpu:2` gives you both GPUs on a node. Each node has two GPUs, so two is the maximum on a single node. Multi-node GPU jobs are possible but uncommon here, so ask if you need one.
+## Can I SSH directly to a compute node?
 
-### How do I know what is free before I ask?
+Only while you hold an allocation on that node. Start with `salloc`, find the assigned node using `squeue --me`, and then SSH to it. Without an allocation, connect to `sprlab005` and submit work through Slurm.
+
+## I need only CPUs. Do I still use Slurm?
+
+Research accounts do:
 
 ```bash
-sinfo            # idle is free, mix is partly used, alloc is full
-squeue           # what is running and queued
+salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-The [live cluster status dashboard](/dashboard/) gives the same view of free GPUs, queue depth, and contention.
+Course-only compute is GPU-budgeted and rejects CPU-only jobs. If a course assignment needs substantial CPU-only work, course staff must provide the intended workflow.
 
-### My job is stuck in `PD` (pending). What does that mean?
+## Why is interactive research limited to an hour?
 
-Pending is normal. Run `squeue --me` and read the reason in parentheses.
+Interactive research runs on the high-turnover `debug` partition. Use it to develop and diagnose, then move unattended or longer work to `sbatch` on `main`. A course assignment has its own wall-time ceiling and budget; always request only the interactive time needed.
 
--   **`Resources`** means the GPUs you asked for are busy, and you are next in line when they free up.
--   **`Priority`** means other jobs are ahead of you in the queue.
--   **`QOSMaxWallDurationPerJobLimit`** means you asked for more time than allowed. Resubmit with a shorter `--time`.
+## What is my account type?
 
-`squeue --me --start` shows an estimated start time.
+Sprocket’s Me and Course pages show the available role and course membership. Graduate and undergraduate research accounts use research QoS. A course-only account uses assignment budgets. A researcher enrolled in a course remains research by default and selects a course assignment account only for course work. See [Accounts and access](accounts.md).
 
-### Can I submit a job and come back later?
+## What course account should I use?
 
-From July 1, yes. Batch submission with `sbatch` needs every home directory on the shared storage, so it switches on when soft enforcement begins, once the June 30 migration is complete. Until then, use `salloc` for everything. For a long run, hold the allocation in `tmux` so it survives a sleeping laptop or a dropped connection: run `salloc`, then `ssh <node>` from inside the tmux session, detach with `Ctrl-b d`, and reattach later with `tmux attach`.
+Copy `--account=<assignment>` from Sprocket’s Checkpoints page or run `mybudget`. When multiple assignments are open, the account is required. Do not guess a Slurm leaf account or copy another team’s value.
 
-### Can I still use VS Code Remote-SSH?
+## How is course budget charged?
 
-Yes. Allocate a node with `salloc`, then point VS Code Remote-SSH at that node. See the [VS Code](vscode.md) page.
+Requested GPUs × requested wall minutes is held when the job is submitted. After completion, actual elapsed GPU-minutes become consumed and unused held time becomes free again. Pending and running team jobs share the same holder pool. See [Course workflow](coursework.md).
 
-### My time limit is too short for my training run.
+## Why does my course budget look unavailable?
 
-You have three options.
+Sprocket intentionally fails closed when queue or accounting evidence is missing or stale. Wait briefly and refresh. If it persists, send Support the assignment, command, approximate time, and displayed source health. Do not attempt to route around the course account.
 
-1.  Ask for more time up front, for example `--time=24:00:00`, up to three days in `main`.
-2.  Submit the run as a batch job with `sbatch` so it runs unattended.
-3.  Add checkpointing to your code so a job can resume where it left off. The sysadmin team is happy to help you set this up.
+## Can course assignments overlap?
 
-### I have a paper or demo deadline. Can I get priority?
+Yes. Each open assignment has a separate budget and account. Select which one pays for the job. The two-GPU holder/user ceiling spans assignments, so overlapping windows do not multiply concurrency.
 
-Yes. Ask in `#server` and the sysadmin team can raise your queue priority for a set window so your jobs start sooner. This is a normal, supported part of how the cluster runs.
+## My team changed. What happens to jobs, budget, and submissions?
 
-### Does any of this change my login, files, or environment?
+An instructor previews and applies the exception in Sprocket. Consumed minutes, existing job holds, closed history, and artifacts remain with their original holder. Staff explicitly choose what happens to free budget. Open confirmations affected by membership may be invalidated so the resulting team confirms a coherent revision.
 
-No. You keep the same username and password, the same conda environments, containers, and tools, and the same home directory path and contents. Your home now lives on shared storage, which is why you need to [migrate your data](storage-migration.md) off the old per-node disks by June 30. The only new step is requesting resources before you use a node, whether a GPU or just cores and memory.
+## How do we submit course work?
 
-### Where did my GPU go when my allocation ended?
+Declare an allowed GitHub revision or a path inside your assigned course workspace in Checkpoints. Sprocket resolves GitHub input to an immutable commit and snapshots path input as an immutable ZFS revision. Path submissions receive an immediate structural result and, when configured by staff, an instructor verifier result. Review the exact revision; every required team member confirms it. Confirmation waits for trusted zero active jobs and closes the assignment window when final.
 
-It returned to the shared pool for the next person. Returning resources when your time is up is what keeps a free GPU available when you need one, rather than reserved and idle by someone who has walked away.
+## How do I request a course extension or budget exception?
 
-### Still stuck?
+Use **Request an adjustment** on the relevant checkpoint. Attach the required private evidence there, not to ordinary Support. Course staff decide the academic exception and Sprocket records the resulting window and budget change.
 
-Ask in `#server`. No question is too basic.
+## Where do files live?
+
+Research homes are under `/spr-storage/home/<username>` with the account-type quota shown in Sprocket. Course-only personal work is under `/course/<NetID>` with a standard 10 GiB baseline; team workspaces normally provide 50 GiB under `/course/groups/<course>/<team>`. Published checkpoint policy can grow course allocations, and they do not shrink automatically. See [Storage](storage.md) for the complete map.
+
+## Can Slurm email me?
+
+Yes:
+
+```bash
+sbatch --mail-type=BEGIN,END,FAIL,TIME_LIMIT --mail-user=<netid> train.sh
+```
+
+A bare NetID goes to `<netid>@illinois.edu`. The sending address is not monitored for replies.
+
+## Can I use more GPUs?
+
+Research limits depend on QoS: 4 for `normal` or `expedite`, 2 for `undergrad`, and up to 8 for requeueable `scavenger`. Each node has two GPUs, so requests above two span nodes and need suitable distributed code.
+
+Course jobs use one node and at most two GPUs. The checkpoint may allow only one, and the requested cost must fit the assignment budget.
+
+## Can I use VS Code?
+
+Yes. Attach VS Code Remote-SSH to `sprlab005`, edit persistent files there, and submit jobs from its terminal. Do not depend on an editor attached to a temporary compute allocation. See [VS Code](vscode.md).
+
+## A login-host command feels throttled
+
+Ordinary users are capped at about eight CPUs on `sprlab005` so one local process cannot starve everybody’s shell. Move heavy compilation, preprocessing, extraction, or training into a Slurm job.
+
+## Where do I ask for help?
+
+Use [Sprocket Support](/support) for technical failures and include exact commands, job IDs, times, and errors. Use [Resource requests](/requests) for reviewed research resources. Course assignment rules, grading, teams, and academic exceptions belong with course staff and the course adjustment flow.
