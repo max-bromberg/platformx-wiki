@@ -899,10 +899,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#course-safety" class="md-nav__link">
+  <a href="#not-for-coursework" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Course safety
+        Not for coursework
       
     </span>
   </a>
@@ -1012,10 +1012,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#course-safety" class="md-nav__link">
+  <a href="#not-for-coursework" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Course safety
+        Not for coursework
       
     </span>
   </a>
@@ -1065,19 +1065,11 @@
 <li>“Run <code>train.py</code> on one GPU for six hours and email me when it finishes.”</li>
 <li>“Why is job 4213 pending?”</li>
 <li>“Package this as a checkpointing batch job suitable for scavenger.”</li>
-<li>“Submit this against the course assignment account shown by <code>mybudget</code> for 30 minutes.”</li>
 </ul>
-<h2 id="course-safety">Course safety<a class="headerlink" href="#course-safety" title="Permanent link">&para;</a></h2>
-<p>An agent does not create budget or choose which overlapping assignment should pay. For course work:</p>
-<ol>
-<li>inspect Sprocket Checkpoints or run <code>mybudget</code>;</li>
-<li>name the intended assignment explicitly;</li>
-<li>verify GPUs × requested minutes fits the free budget; and</li>
-<li>review the generated command before submission.</li>
-</ol>
-<p>The Slurm course gate remains authoritative and fails closed if accounting is unavailable. Never ask an agent to work around an account, QoS, reservation, or budget rejection.</p>
+<h2 id="not-for-coursework">Not for coursework<a class="headerlink" href="#not-for-coursework" title="Permanent link">&para;</a></h2>
+<p>This plugin is for research work only. It stops as soon as it detects a course account, so follow the course’s own guidance for assignment work.</p>
 <h2 id="responsibility">Responsibility<a class="headerlink" href="#responsibility" title="Permanent link">&para;</a></h2>
-<p>The plugin is a convenience, not a separate execution system. Every command runs with the user’s account and permissions. Review destructive commands, requested resources, output paths, and repository changes exactly as you would if typing them yourself.</p>
+<p>The plugin is a convenience, not a separate execution system. Every command runs with the user’s account and permissions. Review destructive commands, requested resources, output paths, and repository changes exactly as you would if typing them yourself. Never ask an agent to work around an account, QoS, reservation, or budget rejection.</p>
 <p>Use <a href="/support">Sprocket Support</a> for plugin or cluster problems and include the generated command and error.</p>
 
 
