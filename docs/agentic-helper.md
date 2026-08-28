@@ -4,12 +4,12 @@ The `sprc-slurm` plugin teaches supported coding agents how to stage, submit, mo
 
 ## Install
 
-The plugin ships from the [`sprc-plugins`](https://github.com/max-bromberg/sprc-plugins) marketplace.
+The plugin ships from the [`sprc-plugins`](https://github.com/platformx-students/sprc-plugins) marketplace.
 
 In Claude Code:
 
 ```text
-/plugin marketplace add max-bromberg/sprc-plugins
+/plugin marketplace add platformx-students/sprc-plugins
 /plugin install sprc-slurm@sprc-plugins
 /reload-plugins
 ```
