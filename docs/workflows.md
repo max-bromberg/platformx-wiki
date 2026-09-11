@@ -4,7 +4,7 @@ Keep durable files on the storage assigned to your account, stage only the data 
 
 ## A reliable run
 
-1. **Keep source and durable inputs in persistent storage.** Research code belongs in `/home` or `/projects`; large research artifacts belong in `/data`. Course work belongs in the personal or team path assigned under `/course`.
+1. **Keep source and durable inputs in persistent storage.** Research code belongs in `/home` or `/projects`, and large research artifacts in `/data`. Course work belongs in the personal or team path assigned under `/course`.
 2. **Use the shared model cache.** Hugging Face tools use `/huggingface` automatically. Course staff may publish a course-specific cache convention.
 3. **Stage a hot working set only when useful.** Research jobs can use `/fast-data` for repeated high-I/O access. Course students use only locations authorized by course staff.
 4. **Run from a script.** Record dependencies, resource requests, input paths, output paths, random seeds, and the immutable code revision.
@@ -33,9 +33,9 @@ mybudget
 sbatch --account=<assignment> --gres=gpu:1 --time=1:00:00 train.sh
 ```
 
-Before launching, coordinate with teammates because pending and running jobs share the holder budget. Commit and push outputs needed for grading, then declare the repository reference in Sprocket. Sprocket resolves it to an immutable revision; every required team member reviews and confirms that exact revision.
+Before launching, coordinate with teammates because pending and running jobs share the holder budget. Commit and push outputs needed for grading, then declare that exact commit SHA in Sprocket. Every required team member reviews and confirms the same revision.
 
-Do not use a mutable branch name alone as your record of what ran. Save the commit hash, job ID, Slurm account, parameters, and relevant artifact paths.
+A branch name is not a record of what ran, because the commit behind it moves. Save the commit hash, job ID, Slurm account, parameters, and relevant artifact paths.
 
 ## Keep the login host responsive
 

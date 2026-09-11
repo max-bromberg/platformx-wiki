@@ -3,7 +3,9 @@
 Connect to `sprlab005.csl.illinois.edu`, request resources through Slurm, and let Slurm place the work on a compute node. The login host is not a compute node.
 
 !!! note "Research and course jobs route differently"
-    The research examples below rely on the account’s default research policy. Course students must also select the assignment account shown in Sprocket; course-only accounts cannot submit unbudgeted research work. See [Course workflow](coursework.md).
+    The research examples below rely on the account’s default research policy. Course students must also name the assignment account shown in Sprocket; an account without research access cannot submit unbudgeted research work. See [Course workflow](coursework.md).
+
+    If your account holds both research and course access, a job submitted without `--account` runs under research policy while an assignment is open, and Slurm prints one reminder naming the course account it was not charged to.
 
 ## Interactive or batch
 
@@ -28,7 +30,7 @@ For CPU-only research work, leave off the GPU request:
 salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-Course allocations require a GPU and an assignment account:
+Course allocations need an assignment account. A GPU is not required, but a job with no GPU is billed as one GPU and receives four CPUs if it requests none:
 
 ```bash
 salloc --account=<assignment> --gres=gpu:1 --time=0:30:00
@@ -98,7 +100,7 @@ sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
 
 Pending is normal. The reason field explains whether the job is waiting for resources, priority, a reservation, or an account/QoS limit. Start times are estimates and become less reliable farther into the future.
 
-Use [Sprocket Queue](/queue) and [Usage](/usage) for the same system at a glance.
+Use [Sprocket Queue](/queue) and [Usage](/usage) for the same information in one view.
 
 ## Stop or change work
 

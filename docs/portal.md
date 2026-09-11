@@ -1,6 +1,6 @@
 # Using the Sprocket portal
 
-Sprocket is the shared control and information surface for the cluster. Public operational information is available without an account; personal, course, lab, and administrative views appear after sign-in according to role.
+Sprocket is the portal for the cluster, and it serves this guide under **Wiki**. Public operational information is available without an account. Personal, course, lab, and administrative views appear after sign-in according to role.
 
 ## Cluster information
 
@@ -8,15 +8,25 @@ Sprocket is the shared control and information surface for the cluster. Public o
 - **Queue** shows current jobs and explains whether GPU utilization is unavailable because a job is pending, CPU-only, or missing telemetry.
 - **Usage** combines current pressure with seven-day activity and evidence-qualified wait ranges for comparable one- and two-GPU jobs. Forecasts are estimates, not reservations or guarantees.
 - **Monitor** gives signed-in lab users detailed node, GPU, process, storage, and telemetry-source health.
-- **Efficiency** ranks lab users only after enough job and GPU evidence exists. It combines GPU activity, CPU and memory fit, and storage headroom; it is coaching evidence, not a performance grade.
+- **Efficiency** ranks lab users once enough job and GPU evidence exists. It combines GPU activity, CPU and memory fit, and storage headroom. Use it to find waste in your own jobs; it is not a performance grade.
+
+Across all of these, a figure Sprocket could not measure is shown as unavailable rather than as zero, and a chart draws an unmeasured interval as a gap. A stale reading is labelled stale.
 
 ## Your account
 
-The **Me** page shows identity and access information, SSH keys when portal management is enabled, personal job and usage history, and storage usage with threshold guidance. A value marked unavailable means Sprocket lacks fresh evidence; it is not treated as zero.
+The **Me** page shows your identity and access, SSH keys when portal management is enabled, personal job and usage history, and storage usage with threshold guidance and links back into this guide. A value marked unavailable means Sprocket has no fresh evidence for it.
 
 ## Course workspace
 
-Students receive **Course → Getting started** and **Course → Checkpoints**. Those pages show course access, storage conventions, open assignment accounts, budgets, deadlines, declarations, confirmations, and adjustment requests. TAs and instructors also receive the Staff console for rosters, teams, checkpoint publication, exceptions, and support.
+Students receive a three-part course workspace:
+
+- **Getting started** covers access, storage, jobs, and support.
+- **Submissions** lists assignments and deadlines, the assigned GitHub repository, declared revisions, and final confirmation.
+- **Budget** shows what is left on the open assignment, what the class can use before the deadline, and the next scheduled capacity change.
+
+Deadlines on these pages are shown in the course timezone.
+
+TAs and instructors also receive the Staff console for rosters, teams, assignment publication and amendment, enrolment changes, exceptions, and the list of holders with nothing submitted before a deadline.
 
 See [Course workflow](coursework.md) before submitting course jobs.
 
@@ -32,6 +42,6 @@ When current behavior conflicts with an older message, check the latest service 
 
 - **Support** is for failures, questions, and course or infrastructure problems. Include the command, job ID, approximate time, and exact error when applicable.
 - **Resource requests** is for research storage, temporary deadline priority, project space, or another operational resource that needs review.
-- Course assignment policy, grading, teams, and academic exceptions route to course staff through the course-aware support and adjustment flows.
+- Course assignment policy, grading, teams, and academic exceptions go to course staff directly. Sprocket has no student-facing form for them.
 
-Do not attach medical or similarly sensitive evidence to an ordinary support report. Use the private checkpoint adjustment workflow designed for that material.
+Do not attach medical or similarly sensitive evidence to a support report or a resource request. Give it to course staff by whatever route they specify.

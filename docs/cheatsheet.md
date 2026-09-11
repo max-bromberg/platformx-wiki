@@ -18,7 +18,7 @@ salloc --account=<assignment> --gres=gpu:1 --time=0:30:00
 mybudget
 ```
 
-Research interactive work routes to `debug` and is capped at one hour. Course work routes through its assignment on `main`; its checkpoint controls the maximum and always requires a GPU.
+Research interactive work routes to `debug` and is capped at one hour. Course work routes through its assignment on `main`; the assignment controls the maximum, and a job with no GPU is billed as one GPU.
 
 After the allocation starts:
 
@@ -65,11 +65,11 @@ Common pending reasons:
 | --- | --- |
 | `Resources` | The requested shape is not free. |
 | `Priority` | Other pending work is ahead. |
-| `AssocGrpGRES` | An account or holder GPU cap is already in use. |
+| `AssocGrpGRES` | An account or holder GPU cap is already in use. For a course job this is your holder cap or the whole class’s cap. |
 | `QOSMaxWallDurationPerJobLimit` | The requested time exceeds the selected tier. |
 | `Reservation` or `ReqNodeNotAvail` | The job is waiting on an applicable capacity window or node. |
 
-Sprocket’s [Queue](/queue) and [Usage](/usage) pages provide a friendlier view.
+Sprocket’s [Queue](/queue) and [Usage](/usage) pages show the same queue with the context that explains it.
 
 ## Stop jobs
 
@@ -114,12 +114,12 @@ Do not normally set a partition. Slurm routes research interactive work to `debu
 
 ## Course-specific constraints
 
-- Use the assignment account from Checkpoints; it is required when assignments overlap.
-- GPU-minute cost is requested GPUs × requested minutes.
-- CPU-only course jobs and job arrays are rejected.
-- Course jobs use one node and at most two GPUs, 64 CPUs, and 512 GB; a checkpoint may be stricter.
+- Use the assignment account shown on Sprocket’s Course pages; it is required when assignments overlap.
+- GPU-minute cost is requested GPUs × requested minutes. A job with no GPU is billed as one GPU, whatever CPU and memory it asks for.
+- Job arrays are rejected. A CPU-only job is accepted, gets four CPUs if it asks for none, and runs outside the course GPU reservation.
+- Course jobs use one node and at most two GPUs, 64 CPUs, and 512 GB; an assignment may be stricter.
 - Cancel and resubmit to change resource or placement fields on a queued course job.
 
 ## Need help?
 
-Use [Sprocket Support](/support) and include the command, job ID, time, and exact error. Research resource requests go through [Resource requests](/requests); course budget and deadline exceptions use the adjustment workflow on Checkpoints.
+Use [Sprocket Support](/support) and include the command, job ID, time, and exact error. Research resource requests go through [Resource requests](/requests). Course budget and deadline exceptions go to course staff.

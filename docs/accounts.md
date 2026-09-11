@@ -1,6 +1,8 @@
 # Accounts and access
 
-Your account type decides which Slurm policy applies. It does not change the hardware you use or the login host you connect to.
+What your account may do decides which Slurm policy applies. It does not change the hardware you use or the login host you connect to.
+
+Sprocket records access as capabilities held by one cluster identity: research access at a tier, course access, or both. One person is one identity. Enrolling a researcher in a course adds course access to the account they already have, and it does not create a second account or a second home directory.
 
 ## Before connecting
 
@@ -19,7 +21,7 @@ For most people the cluster username is their NetID. The welcome message is auth
 | Graduate researcher | Lab research | `normal` research tier | Shared `/spr-storage/home` plus research storage tiers |
 | Undergraduate researcher | Lab research | `undergrad` research tier | Shared `/spr-storage/home` plus research storage tiers |
 | Course-only student | Work for an enrolled course | `course` policy and an open assignment budget | Personal `/course/<NetID>` and, when assigned, a team workspace |
-| Researcher enrolled in a course | Research and course work | Research by default; course only when an assignment account is selected | Existing research home, isolated personal coursework storage, and assigned team storage |
+| Researcher enrolled in a course | Research and course work | Research by default; course only when an assignment account is selected | Existing research home, a separate personal coursework workspace, and assigned team storage |
 
 An undergraduate research account is not the same thing as a course-only student account. The former participates in research fair sharing under `undergrad`; the latter can run only work authorized by an open course assignment.
 
@@ -31,9 +33,11 @@ Research accounts may opt into `scavenger` for restartable batch work. A time-li
 
 ## Course-only students
 
-A course-only UID always enters the course gate. It cannot fall through to research QoS, the research `debug` partition, or unbudgeted CPU-only compute.
+An account with course access and no research access always enters the course gate. It cannot fall through to research QoS, the research `debug` partition, or unbudgeted compute of any kind. A course job with no GPU is admitted and billed as one GPU.
 
 Selecting a course during roster invitation creates the student membership and individual holder together with the invite. During acceptance, a new course-only student must add an SSH public key; the account has no usable password. Sprocket then creates the locked Unix identity, private `/course/<NetID>` home, compute-node identities, SSH key, and Slurm holder before enabling portal access. A failure pauses the durable setup job for an administrator to retry instead of reporting a partially built account as ready.
+
+Course staff can end an enrolment. The membership is archived with a recorded reason, the team seat ends, and the course gate stops accepting new course jobs at its next refresh. Submitted revisions, recorded outcomes, and coursework storage are kept. Re-enrolling is a cluster administrator’s action.
 
 Course compute requires all of the following:
 
@@ -43,19 +47,19 @@ Course compute requires all of the following:
 4. enough free GPU-minutes for requested GPUs multiplied by requested wall time; and
 5. a request within the assignment’s GPU and wall-time ceilings.
 
-If no assignment is open or no budget remains, compute access takes a no-budget posture: the account remains present, but no job can be submitted. A later assignment restores access through its own budget.
+If no assignment is open or no budget remains, the account stays in place and no course job can be submitted. A later assignment restores access through its own budget.
 
 ## Researchers who are also course students
 
-Dual-role users remain research users unless they explicitly select course work. This keeps an ordinary research command out of course reservations and budgets:
-
-Their existing UID and research passwd home remain authoritative. Course convergence adds a
-separate `/course/<NetID>` coursework dataset for individual path snapshots; it does not replace
-`$HOME` or create a second identity.
+An account that holds both research and course access runs research policy unless it names a course account. That keeps an ordinary research command out of course reservations and budgets:
 
 ```bash
 sbatch --gres=gpu:1 --time=4:00:00 research.sh
 ```
+
+The account, its home directory, and its research tier stay as they are. Course access adds a
+separate `/course/<NetID>` coursework workspace for individual path submissions. It does not replace
+`$HOME` and it does not create a second account.
 
 For course work, use the assignment account displayed on Sprocket:
 
@@ -63,11 +67,13 @@ For course work, use the assignment account displayed on Sprocket:
 sbatch --account=<assignment> --gres=gpu:1 --time=1:00:00 course.sh
 ```
 
-Selecting a course account applies the full course posture: assignment budget, course QoS, course capacity reservation, one-node limit, and holder GPU cap. Selecting a research account from a course-only UID does not bypass the gate.
+Naming a course account applies every course rule at once: the assignment budget, course QoS, the course capacity reservation, the one-node limit, and the holder GPU cap. An account without research access cannot reach research policy by naming a research account.
+
+When such an account submits without `--account` while a course assignment is open, the job runs under research policy and Slurm prints one reminder naming the assignment account it was not charged to. It is a reminder, not a rejection: the job is already submitted.
 
 ## If access does not work
 
 - **Portal sign-in or SSH problem:** use [Sprocket Support](/support).
-- **No course or checkpoint appears:** contact course staff; membership and publication are instructor-controlled.
+- **No course or assignment appears:** contact course staff. Membership and publication are instructor-controlled.
 - **Invalid account or account/partition combination:** include the exact command and error in a support report.
-- **Resource or storage request:** use [Resource requests](/requests). Course budget exceptions follow the adjustment workflow on the Checkpoints page instead.
+- **Resource or storage request:** use [Resource requests](/requests). Course budget and deadline exceptions go to course staff instead; Sprocket has no student-facing form for them.

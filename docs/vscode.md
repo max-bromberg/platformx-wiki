@@ -25,7 +25,7 @@ The job runs on a compute node while logs and outputs appear in shared storage t
 
 ## Run course compute
 
-Copy the assignment account from Sprocket Checkpoints:
+Copy the assignment account from Sprocket’s Course pages:
 
 ```bash
 mybudget
@@ -40,7 +40,7 @@ A compute-node SSH session requires an active allocation and is bound to that jo
 
 For a short terminal debugging session, use `salloc`, then SSH to the assigned node. Keep the VS Code window on the login host unless there is a specific reason to attach an editor to the temporary allocation.
 
-## Guardrails
+## Limits to keep in mind
 
 - The login host has no GPU. `nvidia-smi` belongs inside an allocation.
 - Keep training, heavy preprocessing, and large builds off the login host.

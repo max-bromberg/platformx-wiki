@@ -32,7 +32,7 @@ Research accounts do:
 salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-Course-only compute is GPU-budgeted and rejects CPU-only jobs. If a course assignment needs substantial CPU-only work, course staff must provide the intended workflow.
+Course compute is GPU-budgeted and accepts CPU-only jobs, each billed as one GPU whatever CPU and memory it requests. A CPU-only course job runs outside the course GPU reservation and receives four CPUs if it asks for none. Substantial CPU-only work spends the assignment budget at the same rate as GPU work, so course staff should size the budget for the workflow they intend.
 
 ## Why is interactive research limited to an hour?
 
@@ -40,11 +40,11 @@ Interactive research runs on the high-turnover `debug` partition. Use it to deve
 
 ## What is my account type?
 
-Sprocket’s Me and Course pages show the available role and course membership. Graduate and undergraduate research accounts use research QoS. A course-only account uses assignment budgets. A researcher enrolled in a course remains research by default and selects a course assignment account only for course work. See [Accounts and access](accounts.md).
+Sprocket’s Me and Course pages show what your account may do and which courses it belongs to. Sprocket records research access, course access, or both against one identity, so enrolling in a course adds course access to the account you already have. Graduate and undergraduate research accounts use research QoS, a course-only account uses assignment budgets, and an account holding both stays on research policy until it names a course assignment account. See [Accounts and access](accounts.md).
 
 ## What course account should I use?
 
-Copy `--account=<assignment>` from Sprocket’s Checkpoints page or run `mybudget`. When multiple assignments are open, the account is required. Do not guess a Slurm leaf account or copy another team’s value.
+Copy `--account=<assignment>` from Sprocket’s Budget page or run `mybudget`. When multiple assignments are open, the account is required. Do not guess a Slurm leaf account or copy another team’s value.
 
 ## How is course budget charged?
 
@@ -52,7 +52,7 @@ Requested GPUs × requested wall minutes is held when the job is submitted. Afte
 
 ## Why does my course budget look unavailable?
 
-Sprocket intentionally fails closed when queue or accounting evidence is missing or stale. Wait briefly and refresh. If it persists, send Support the assignment, command, approximate time, and displayed source health. Do not attempt to route around the course account.
+When queue or accounting evidence is missing or stale, Sprocket refuses the submission rather than running it without a limit. Wait briefly and refresh. If it persists, send Support the assignment, command, approximate time, and the source health it displays. Do not try to route around the course account.
 
 ## Can course assignments overlap?
 
@@ -64,15 +64,19 @@ An instructor previews and applies the exception in Sprocket. Consumed minutes, 
 
 ## How do we submit course work?
 
-Declare an allowed GitHub revision or a path inside your assigned course workspace in Checkpoints. Sprocket resolves GitHub input to an immutable commit and snapshots path input as an immutable ZFS revision. Path submissions receive an immediate structural result and, when configured by staff, an instructor verifier result. Review the exact revision; every required team member confirms it. Confirmation waits for trusted zero active jobs and closes the assignment window when final.
+Declare a full GitHub commit SHA, or a path inside your assigned course workspace, on the Submissions page. Course staff assign the repository; you supply one exact commit, and a branch or tag name is not accepted because what it points at can change. Sprocket verifies the commit you name and snapshots path input as an immutable ZFS revision. Path submissions receive an immediate structural result and, when staff configure one, an instructor verifier result. Review the exact revision; every required team member confirms it. Confirmation waits for a trusted count of zero active jobs, closes the assignment window, and discards remaining GPU-minutes once active jobs clear.
 
 ## How do I request a course extension or budget exception?
 
-Use **Request an adjustment** on the relevant checkpoint. Attach the required private evidence there, not to ordinary Support. Course staff decide the academic exception and Sprocket records the resulting window and budget change.
+Ask course staff directly. They decide the exception, collect any supporting documentation they require, and then record the resulting deadline or budget change in Sprocket. There is no student-facing form for it, and Support cannot grant one. Do not send supporting documents through Support.
+
+## Is my budget or the queue limiting me?
+
+Compare two figures that `mybudget` and the **Budget** page both print: your free GPU-minutes, and your equal share of what the class can use before your deadline. If your free budget is the smaller number, your budget is the limit and a quieter hour will not give you more. If your equal share is the smaller number, the queue is the limit, and the way to spend what you hold is to submit into the larger capacity windows.
 
 ## Where do files live?
 
-Research homes are under `/spr-storage/home/<username>` with the account-type quota shown in Sprocket. Course-only personal work is under `/course/<NetID>` with a standard 10 GiB baseline; team workspaces normally provide 50 GiB under `/course/groups/<course>/<team>`. Published checkpoint policy can grow course allocations, and they do not shrink automatically. See [Storage](storage.md) for the complete map.
+Research homes are under `/spr-storage/home/<username>`, which is the same filesystem as `/home`. Course personal work is under `/course/<NetID>`, and team workspaces under `/course/groups/<course>/<team>`. Course workspace sizes come from the course’s published assignments, so they change when staff publish or amend one, and they never shrink below what the workspace already holds. `mybudget` prints the current sizes and your usage. See [Storage](storage.md) for the complete map.
 
 ## Can Slurm email me?
 
@@ -88,7 +92,7 @@ A bare NetID goes to `<netid>@illinois.edu`. The sending address is not monitore
 
 Research limits depend on QoS: 4 for `normal` or `expedite`, 2 for `undergrad`, and up to 8 for requeueable `scavenger`. Each node has two GPUs, so requests above two span nodes and need suitable distributed code.
 
-Course jobs use one node and at most two GPUs. The checkpoint may allow only one, and the requested cost must fit the assignment budget.
+Course jobs use one node and at most two GPUs. The assignment may allow only one, and the requested cost must fit its budget.
 
 ## Can I use VS Code?
 
