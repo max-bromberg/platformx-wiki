@@ -1,5 +1,5 @@
 site_name: Systems Platform and Intelligence Lab
-site_description: Documentation for the sprc compute cluster — logging in, running jobs on SLURM, storage, and sharing the GPUs fairly.
+site_description: Documentation for the sprc compute cluster, covering logging in, running jobs on SLURM, storage, and sharing the GPUs fairly.
 site_url: http://sprlab005.csl.illinois.edu/
 
 theme:

@@ -30,7 +30,7 @@ For CPU-only research work, leave off the GPU request:
 salloc --cpus-per-task=8 --mem=32G --time=1:00:00
 ```
 
-Course allocations need an assignment account. A GPU is not required, but a job with no GPU is billed as one GPU and receives four CPUs if it requests none:
+Course allocations need an assignment account. A job may run with no GPU. It is billed as one GPU and receives four CPUs if it requests none:
 
 ```bash
 salloc --account=<assignment> --gres=gpu:1 --time=0:30:00

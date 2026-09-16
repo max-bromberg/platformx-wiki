@@ -41,7 +41,7 @@ or the portal's **Budget** page. Both report the same figures for the open assig
 
 Both also report the class capacity between now and your deadline. That is the number of GPU-minutes the whole class can use in that window under the current capacity schedule, the number of holders who could compete for them, and your equal share if all of them do. The share assumes every holder competes evenly. Sprocket does not predict what other holders will actually do.
 
-Read the two together. If your free budget is below your equal share, your own budget is the tighter limit, and waiting for a quieter hour does not give you more of it. If your equal share is below your free budget, the queue is the tighter limit, and submitting into the larger capacity windows is how you spend what you hold.
+Read the two together. If your free budget is below your equal share, your own budget is the tighter limit, and waiting for a quieter hour does not give you more of it. If your equal share is below your free budget, the queue is the tighter limit. `mybudget` and the **Budget** page report the capacity in force now and the next scheduled change, so submit into a window that has room.
 
 `mybudget` also reports your workspace and team disk use, how many course GPUs are busy now, and the next scheduled capacity change. When Sprocket cannot be reached, it falls back to a local cache and labels the figures as cached.
 
@@ -61,7 +61,7 @@ sbatch --account=<assignment> --gres=gpu:1 --time=1:00:00 train.sh
 
 The cluster-wide course ceiling is two GPUs per holder and two GPUs per course user. An assignment may set a lower GPU or wall-time limit. Each job is limited to one node, 64 CPUs, and 512 GB of memory. Job arrays are not accepted because every array element would need an independent budget reservation.
 
-Instructors can amend a published assignment. Its name, start, deadline, GPU-minute total, GPUs per job, wall-time ceiling, storage size, grader, and allowed submission sources can all be corrected after publication, and the portal shows staff what an amendment takes away from students already working. The assignment key, its sequence, whether it is held by students or teams, and its path verifier are fixed once published.
+Instructors can amend a published assignment, so treat the Course pages as the current values rather than a copy you took earlier.
 
 After submission, resource-changing edits are rejected because they would invalidate the reserved cost. Cancel and resubmit to change the account, QoS, partition, reservation, GPUs, CPUs, memory, nodes, or wall time. Naming, holding, and releasing a job remain available.
 
@@ -71,7 +71,7 @@ When an assignment uses team holders, every team member shares its compute budge
 
 Course staff can form teams for part of a roster and add the rest later, so your team may appear before every classmate has been placed. A team formed after an assignment is published joins that assignment straight away.
 
-Instructors can correct team membership for drops, reassignments, or other exceptions. A reviewed change can keep, reset, explicitly set, remove, or transfer free budget. Consumed time, time held by existing jobs, closed history, and existing artifacts never move silently. An open submission that no longer matches the team may require a new declaration and confirmation.
+Instructors can change team membership during the term. If yours changes, course staff will tell you, and an open submission may need declaring and confirming again by the team as it then stands.
 
 ## 5. Store course files
 
@@ -92,7 +92,7 @@ On Submissions, choose a source allowed by the instructor:
 
 An invalid declaration never replaces the current valid attempt. Correct the path or the commit and create another revision. Review the selected source, validity result, and immutable revision before confirming.
 
-For team submissions, every required team member confirms the same revision. Final confirmation is blocked while jobs are active or job evidence is stale. Once confirmation succeeds, the holder’s assignment window closes immediately and that revision becomes the final submission. If nobody confirms early, the deadline worker selects the latest eligible declaration or records no submission when the effective close time passes. A declaration is eligible on the time you submitted it, not the time validation finished. If a revision is still being validated when the close time passes, Sprocket waits for it before deciding, so a slow validation does not cost you the submission.
+For team submissions, every required team member confirms the same revision. Final confirmation is blocked while jobs are active or job evidence is stale. Once confirmation succeeds, the holder’s assignment window closes immediately and that revision becomes the final submission. If nobody confirms early, the deadline worker selects the latest eligible declaration or records no submission when the effective close time passes. Eligibility is decided on the time you submitted the declaration.
 
 Confirmation is consequential. Stop or finish relevant jobs, verify outputs are pushed, confirm the immutable revision, and only then acknowledge the finalization warning. Remaining GPU-minutes are discarded once active jobs clear.
 
@@ -100,8 +100,6 @@ An assignment is either graded by hand or linked to a grader. Where one is linke
 
 ## 7. Extensions and exceptions
 
-Ask course staff when an exception needs additional GPU-minutes or a later deadline. They collect whatever supporting documentation they require and decide the exception. Sprocket has no student-facing form for it, so do not send supporting documents through Support.
-
-Course staff then record the decision in Sprocket by correcting the holder’s open or close time, or the holder’s budget. Reopening a finalized assignment preserves the earlier outcome and grading record as superseded history rather than erasing them. While the reopened window is open you declare and confirm again as normal, and your earlier submission stays in the record.
+Ask course staff when you need additional GPU-minutes or a later deadline. They decide it and will tell you the outcome directly. Sprocket has no student-facing form for it, so do not send supporting documents through Support.
 
 For a technical failure, use [Sprocket Support](/support). Assignment rules, grading, teams, and deadline decisions belong with course staff.

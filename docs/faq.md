@@ -60,7 +60,7 @@ Yes. Each open assignment has a separate budget and account. Select which one pa
 
 ## My team changed. What happens to jobs, budget, and submissions?
 
-An instructor previews and applies the exception in Sprocket. Consumed minutes, existing job holds, closed history, and artifacts remain with their original holder. Staff explicitly choose what happens to free budget. Open confirmations affected by membership may be invalidated so the resulting team confirms a coherent revision.
+Course staff decide it and will tell you what it means for your team. Minutes you have already used, time held by running jobs, and closed history stay with the holder they belong to. An open confirmation may need redoing by the team as it then stands.
 
 ## How do we submit course work?
 
@@ -68,11 +68,11 @@ Declare a full GitHub commit SHA, or a path inside your assigned course workspac
 
 ## How do I request a course extension or budget exception?
 
-Ask course staff directly. They decide the exception, collect any supporting documentation they require, and then record the resulting deadline or budget change in Sprocket. There is no student-facing form for it, and Support cannot grant one. Do not send supporting documents through Support.
+Ask course staff directly. They decide it and will tell you the outcome. There is no student-facing form for it, and Support cannot grant one. Do not send supporting documents through Support.
 
 ## Is my budget or the queue limiting me?
 
-Compare two figures that `mybudget` and the **Budget** page both print: your free GPU-minutes, and your equal share of what the class can use before your deadline. If your free budget is the smaller number, your budget is the limit and a quieter hour will not give you more. If your equal share is the smaller number, the queue is the limit, and the way to spend what you hold is to submit into the larger capacity windows.
+Compare two figures that `mybudget` and the **Budget** page both print: your free GPU-minutes, and your equal share of what the class can use before your deadline. If your free budget is the smaller number, your budget is the limit and a quieter hour will not give you more. If your equal share is the smaller number, the queue is the limit. Both surfaces report the capacity in force now and the next scheduled change, so submit into a window that has room.
 
 ## Where do files live?
 

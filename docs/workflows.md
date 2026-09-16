@@ -10,7 +10,7 @@ Keep durable files on the storage assigned to your account, stage only the data 
 4. **Run from a script.** Record dependencies, resource requests, input paths, output paths, random seeds, and the immutable code revision.
 5. **Copy results back and clean scratch.** Temporary fast storage is not a durable artifact store.
 
-Small jobs that read data once may gain nothing from staging. Avoid copying data simply because a faster tier exists.
+Small jobs that read data once may gain nothing from staging. Avoid copying data because a faster tier exists.
 
 ## Research pattern
 

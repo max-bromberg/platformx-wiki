@@ -31,13 +31,13 @@ Course jobs use the shared `course` QoS at priority 200. They do not compete thr
 2. **Holder and user cap:** no holder or course user can occupy more than two GPUs across overlapping assignments.
 3. **Scheduled class capacity:** a course job that requests a GPU attaches to a Sprocket-owned reservation that bounds the class’s total use for the current time window. A course job with no GPU runs outside the reservation and is still billed as one GPU.
 
-The schedule holds one capacity for weekday working hours and a larger one for weekday nights, early mornings, and weekends. It bounds the GPUs, CPUs, and memory the class can hold at once. Administrators adjust the window boundaries and the caps through the term as course and research demand changes, so this page does not print the current figures. `mybudget` and the portal's **Budget** page report the cap in force now and the next scheduled change. Running jobs may cross a schedule boundary; a new cap controls additional starts rather than stopping work already running.
+The schedule holds separate capacities for weekday working hours and for weekday nights, early mornings, and weekends. It bounds the GPUs, CPUs, and memory the class can hold at once. Administrators adjust the window boundaries and the caps through the term as course and research demand changes, so this page does not print the current figures. `mybudget` and the portal's **Budget** page report the cap in force now and the next scheduled change. Running jobs may cross a schedule boundary; a new cap controls additional starts rather than stopping work already running.
 
 Instructors set each assignment’s budget, GPU cap up to the two-GPU holder ceiling, wall-time ceiling, dates, and storage allowance, and they can amend a published assignment. Those values appear on the student’s Course pages and are more specific than this cluster-wide overview.
 
 ## Why reservations are used
 
-The schedule separates research and course demand in advance, so the two groups do not have to coordinate with each other job by job. During research-heavy daytime hours, most GPUs stay outside course capacity. Nights and weekends give the class more. Administrators retune the windows and caps during the semester from observed contention.
+The schedule separates research and course demand in advance, so the two groups do not have to coordinate with each other job by job. Most GPUs stay outside course capacity so that research work has somewhere to run. Administrators retune the window boundaries and the caps during the semester from observed contention, so check `mybudget` or the **Budget** page for the capacity in force now.
 
 Course jobs never use `debug`, and an account without research access cannot reach research policy. An account that holds both research and course access stays in research policy unless it names a course assignment account.
 
