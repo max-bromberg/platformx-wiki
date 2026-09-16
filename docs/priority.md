@@ -43,7 +43,7 @@ Course jobs never use `debug`, and an account without research access cannot rea
 
 ## Deadline research: `expedite`
 
-For a genuine paper or demo deadline, submit a Resource request in Sprocket or use the lab’s established coordination channel. A grant is normally time-limited and automatically expires. Once approved:
+For a genuine paper or demo deadline, submit a Work request in Sprocket or use the lab’s established coordination channel. A grant is normally time-limited and automatically expires. Once approved:
 
 ```bash
 sbatch --qos=expedite --gres=gpu:1 --time=24:00:00 train.sh

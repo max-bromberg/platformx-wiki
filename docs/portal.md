@@ -41,7 +41,8 @@ When current behavior conflicts with an older message, check the latest service 
 ## Get help
 
 - **Support** is for failures, questions, and course or infrastructure problems. Include the command, job ID, approximate time, and exact error when applicable.
-- **Resource requests** is for research storage, temporary deadline priority, project space, or another operational resource that needs review.
+- **Resource requests** is for research storage, project space, or another lasting operational resource that needs review.
+- **Work requests** is for a temporary change to how your work is scheduled, such as a time limited priority grant for a deadline. These expire on their own.
 - Course assignment policy, grading, teams, and academic exceptions go to course staff directly. Sprocket has no student-facing form for them.
 
 Do not attach medical or similarly sensitive evidence to a support report or a resource request. Give it to course staff by whatever route they specify.

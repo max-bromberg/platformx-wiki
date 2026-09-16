@@ -92,7 +92,7 @@ On Submissions, choose a source allowed by the instructor:
 
 An invalid declaration never replaces the current valid attempt. Correct the path or the commit and create another revision. Review the selected source, validity result, and immutable revision before confirming.
 
-For team submissions, every required team member confirms the same revision. Final confirmation is blocked while jobs are active or job evidence is stale. Once confirmation succeeds, the holder’s assignment window closes immediately and that revision becomes the final submission. If nobody confirms early, the deadline worker selects the latest eligible declaration or records no submission when the effective close time passes.
+For team submissions, every required team member confirms the same revision. Final confirmation is blocked while jobs are active or job evidence is stale. Once confirmation succeeds, the holder’s assignment window closes immediately and that revision becomes the final submission. If nobody confirms early, the deadline worker selects the latest eligible declaration or records no submission when the effective close time passes. A declaration is eligible on the time you submitted it, not the time validation finished. If a revision is still being validated when the close time passes, Sprocket waits for it before deciding, so a slow validation does not cost you the submission.
 
 Confirmation is consequential. Stop or finish relevant jobs, verify outputs are pushed, confirm the immutable revision, and only then acknowledge the finalization warning. Remaining GPU-minutes are discarded once active jobs clear.
 
@@ -102,6 +102,6 @@ An assignment is either graded by hand or linked to a grader. Where one is linke
 
 Ask course staff when an exception needs additional GPU-minutes or a later deadline. They collect whatever supporting documentation they require and decide the exception. Sprocket has no student-facing form for it, so do not send supporting documents through Support.
 
-Course staff then record the decision in Sprocket by correcting the holder’s open or close time, or the holder’s budget. Reopening a finalized assignment preserves the earlier outcome and grading record as superseded history rather than erasing them.
+Course staff then record the decision in Sprocket by correcting the holder’s open or close time, or the holder’s budget. Reopening a finalized assignment preserves the earlier outcome and grading record as superseded history rather than erasing them. While the reopened window is open you declare and confirm again as normal, and your earlier submission stays in the record.
 
 For a technical failure, use [Sprocket Support](/support). Assignment rules, grading, teams, and deadline decisions belong with course staff.
