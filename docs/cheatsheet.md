@@ -106,6 +106,7 @@ sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES,Account
 | `--account=<assignment>` | Charge course work to the assignment shown in Sprocket. Do not use for ordinary research. |
 | `--qos=scavenger` | Restartable, lowest-priority research batch work. |
 | `--qos=expedite` | Research deadline work during an approved grant. |
+| `--qos=deadline6`, `--qos=deadline8` | Up to 6 or 8 GPUs for research deadline work during an approved grant. |
 | `--mail-type=END,FAIL` | Select email events. Also accepts `BEGIN`, `TIME_LIMIT`, and `ALL`. |
 | `--mail-user=<netid>` | Deliver to the university address for a bare NetID. |
 | `--job-name=<name>` or `-J <name>` | Give the job a readable name. |
