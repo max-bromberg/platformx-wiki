@@ -64,7 +64,7 @@ Course staff decide it and will tell you what it means for your team. Minutes yo
 
 ## How do we submit course work?
 
-Declare a full GitHub commit SHA, or a path inside your assigned course workspace, on the Submissions page. Course staff assign the repository; you supply one exact commit, and a branch or tag name is not accepted because what it points at can change. Sprocket verifies the commit you name and snapshots path input as an immutable ZFS revision. Path submissions receive an immediate structural result and, when staff configure one, an instructor verifier result. Review the exact revision; every required team member confirms it. Confirmation waits for a trusted count of zero active jobs, closes the assignment window, and discards remaining GPU-minutes once active jobs clear.
+Declare a full GitHub commit SHA, or a path inside your assigned course workspace, on the Submissions page. Course staff assign the repository; you supply one exact commit, and a branch or tag name is not accepted because what it points at can change. Sprocket verifies the commit you name, and copies a path into its own storage so later changes do not affect it. Path submissions receive an immediate structural result and, when staff set them up, submission check results. A revision the checks did not accept cannot be confirmed and does not replace an earlier accepted one; see [Course workflow](coursework.md#submission-checks). Review the exact revision; every required team member confirms it. Confirmation waits for a trusted count of zero active jobs, closes the assignment window, and discards remaining GPU-minutes once active jobs clear.
 
 ## How do I request a course extension or budget exception?
 
