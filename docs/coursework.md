@@ -49,7 +49,7 @@ If accounting is missing or stale, course submission is refused rather than run 
 
 ## 3. Run course work
 
-Course jobs run on `main` and use one compute node. A job that requests a GPU attaches to the active course capacity reservation. A job with no GPU runs outside that reservation and is billed as one GPU whatever CPUs and memory it requests. Do not request `debug`, `normal`, `undergrad`, `expedite`, or `scavenger` for course work.
+Course jobs run on `main` and use one compute node. A job that requests a GPU attaches to the active course capacity reservation when the class has one; otherwise it runs on `main` up to the class limit. A job with no GPU runs outside that reservation and is billed as one GPU whatever CPUs and memory it requests. Do not request `debug`, `normal`, `undergrad`, `expedite`, or `scavenger` for course work.
 
 ```bash
 # short interactive test

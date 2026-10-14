@@ -110,13 +110,13 @@ sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES,Account
 | `--mail-user=<netid>` | Deliver to the university address for a bare NetID. |
 | `--job-name=<name>` or `-J <name>` | Give the job a readable name. |
 
-Do not normally set a partition. Slurm routes research interactive work to `debug`, research batch to `main`, and course work to the appropriate course reservation on `main`.
+Do not normally set a partition. Slurm routes research interactive work to `debug`, research batch to `main`, and course work to the course reservation on `main` when one is set, otherwise to `main` up to the class limit.
 
 ## Course-specific constraints
 
 - Use the assignment account shown on Sprocket’s Course pages; it is required when assignments overlap.
 - GPU-minute cost is requested GPUs × requested minutes. A job with no GPU is billed as one GPU, whatever CPU and memory it asks for.
-- Job arrays are rejected. A CPU-only job is accepted, gets four CPUs if it asks for none, and runs outside the course GPU reservation.
+- Job arrays are rejected. A CPU-only job is accepted, gets four CPUs if it asks for none, and never uses the course GPU reservation.
 - Course jobs use one node and at most two GPUs, 64 CPUs, and 512 GB; an assignment may be stricter.
 - Cancel and resubmit to change resource or placement fields on a queued course job.
 
