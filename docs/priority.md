@@ -7,11 +7,13 @@ The cluster serves research and supported courses on the same eight GPUs. Resear
 | Tier | Who | Queue priority | Batch wall time | GPUs per user |
 | --- | --- | ---: | ---: | ---: |
 | `expedite` | Researcher with an active deadline grant | 1000 | 24 hours | 4 |
+| `deadline6` | Researcher with an active deadline tier grant | 500 | 24 hours | 6 |
+| `deadline8` | Researcher with an active deadline tier grant | 500 | 24 hours | 8 |
 | `normal` | Graduate researcher, default | 500 | 3 days | 4 |
 | `undergrad` | Undergraduate researcher, default | 400 | 1 day | 2 |
 | `scavenger` | Any researcher, explicit best effort | 1 | 1 day | 8 |
 
-Research users do not choose `normal` or `undergrad`; the account supplies the correct default. `expedite` is selectable only during an approved grant. `scavenger` is opt-in and batch-only.
+Research users do not choose `normal` or `undergrad`; the account supplies the correct default. `expedite`, `deadline6`, and `deadline8` are selectable only during an approved grant. `scavenger` is opt-in and batch-only.
 
 Interactive research sessions are routed to `debug`, which has a one-hour cap and schedules ahead of pending batch work without preempting a running job. An interactive `expedite` session is the deadline exception and runs on `main`; interactive `scavenger` is rejected.
 
@@ -41,15 +43,25 @@ The schedule separates research and course demand in advance, so the two groups 
 
 Course jobs never use `debug`, and an account without research access cannot reach research policy. An account that holds both research and course access stays in research policy unless it names a course assignment account.
 
-## Deadline research: `expedite`
+## Deadline research: `expedite`, `deadline6`, and `deadline8`
 
-For a genuine paper or demo deadline, submit a Work request in Sprocket or use the lab’s established coordination channel. A grant is normally time-limited and automatically expires. Once approved:
+For a genuine paper or demo deadline, submit a Work request in Sprocket or use the lab’s established coordination channel. A grant is time-limited and expires automatically. Sprocket emails you when the grant starts and when it ends, and the Work requests page shows the option to use while it is active.
+
+A grant adds the QoS to your account. It does not change the QoS of jobs you submit without it, so name it on each job you submit during the grant:
 
 ```bash
 sbatch --qos=expedite --gres=gpu:1 --time=24:00:00 train.sh
 ```
 
-Expedite raises queue priority; it does not evict ordinary running work. It is not a course-budget extension.
+Expedite raises queue priority. The deadline tiers keep `normal` priority and raise the number of GPUs you can hold at once: 6 with `deadline6`, 8 with `deadline8`. Each node has two GPUs, so a job that uses more than two spans nodes:
+
+```bash
+sbatch --qos=deadline6 --nodes=3 --gres=gpu:2 --time=24:00:00 train.sh
+```
+
+None of these evict ordinary running work, and none of them extend a course budget.
+
+When the grant ends, running jobs continue. Jobs still waiting in the queue with the QoS will not start. Move each one to your default QoS with `scontrol update job=<jobid> qos=normal` (`undergrad` for an undergraduate account), or cancel and resubmit it.
 
 ## Best effort: `scavenger`
 
