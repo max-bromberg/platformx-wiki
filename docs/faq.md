@@ -18,7 +18,7 @@ sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
 
 Pending is normal. Run `squeue --me` and inspect the reason. `Resources` means the requested shape is busy; `Priority` means other work is ahead; `AssocGrpGRES` commonly means an account or course-holder GPU cap is in use. `squeue --me --start` is an estimate, not a guarantee.
 
-Sprocket’s [Queue](/queue) and [Usage](/usage) pages add current pressure, history, and evidence-qualified wait ranges.
+Sprocket’s [Hub](/hub) adds current pressure, history, and evidence-qualified wait ranges.
 
 ## Can I SSH directly to a compute node?
 

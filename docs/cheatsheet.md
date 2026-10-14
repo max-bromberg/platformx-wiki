@@ -69,7 +69,7 @@ Common pending reasons:
 | `QOSMaxWallDurationPerJobLimit` | The requested time exceeds the selected tier. |
 | `Reservation` or `ReqNodeNotAvail` | The job is waiting on an applicable capacity window or node. |
 
-Sprocket’s [Queue](/queue) and [Usage](/usage) pages show the same queue with the context that explains it.
+Sprocket’s [Hub](/hub) shows the same queue with the context that explains it.
 
 ## Stop jobs
 

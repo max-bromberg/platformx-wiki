@@ -8,7 +8,7 @@ Sprocket is the portal for the cluster, and it serves this guide under **Wiki**.
 - **Queue** shows current jobs and the CPU, memory, and GPU each one holds. It explains whether GPU utilization is unavailable because a job is pending, CPU-only, or missing telemetry. The list can be filtered by whose job it is, whether it is coursework or research, or whether it holds a GPU, and sorted by job, user, class, state, CPU, memory, GPU, elapsed time, or time limit.
 - **Usage** combines current pressure with seven-day activity and evidence-qualified wait ranges for comparable one- and two-GPU jobs. Forecasts are estimates, not reservations or guarantees.
 - **Monitor** gives signed-in lab users detailed node, GPU, process, storage, and telemetry-source health. It shows what each node currently holds in CPU, memory, and GPU, and how much of that is coursework versus research, both per node and across the cluster.
-- **Efficiency** ranks lab users once enough job and GPU evidence exists. It combines GPU activity, CPU and memory fit, and storage headroom. Use it to find waste in your own jobs; it is not a performance grade.
+- **Efficiency** ranks research members once enough job and GPU evidence from their research jobs exists. Students do not appear, and course jobs never count, including for a researcher who also takes or staffs a course. It combines GPU activity, CPU and memory fit, and storage headroom. Use it to find waste in your own jobs; it is not a performance grade.
 
 Across all of these, a figure Sprocket could not measure is shown as unavailable rather than as zero, and a chart draws an unmeasured interval as a gap. A stale reading is labelled stale.
 
