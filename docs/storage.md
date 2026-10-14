@@ -18,7 +18,7 @@ Large datasets, shared project trees, model weights, and temporary high-I/O work
 
 ## Course storage: `/course`
 
-A course-only student receives a normal Unix home backed by its own ZFS dataset at `/course/<NetID>`. It is mode `0700` and stays personal after teams form. Both the dataset quota and the referenced-data quota are set to the same boundary, so retained immutable submission snapshots cannot grow outside the approved allocation.
+A course-only student receives a normal Unix home backed by its own ZFS dataset at `/course/<NetID>`. It is mode `0700` and stays personal after teams form. When you submit a path, Sprocket copies it into its own storage, outside your workspace, so submission history does not count against your quota.
 
 A team assignment can create a shared workspace at:
 
@@ -35,7 +35,7 @@ does not create a second account and does not replace the research home.
 
 ## Projects: `/projects`
 
-`/projects` is research group storage for shared code, source trees, package installations, and datasets containing many small files. Directories are group-owned and carry an aggregate project quota rather than a per-person quota. Request a project directory or membership through [Resource requests](/requests).
+`/projects` is research group storage for shared code, source trees, package installations, and datasets containing many small files. Directories are group-owned. No filesystem quota is enforced on `/projects`; the allowance agreed through a resource request is what a group is expected to keep to, and the filesystem is shared with everyone else. Request a project directory or membership through [Resource requests](/requests).
 
 Course students should not assume they can use `/projects`; use the course workspace unless course staff explicitly provide another location.
 

@@ -67,7 +67,7 @@ For course work, use the assignment account displayed on Sprocket:
 sbatch --account=<assignment> --gres=gpu:1 --time=1:00:00 course.sh
 ```
 
-Naming a course account applies every course rule at once: the assignment budget, course QoS, the course capacity reservation, the one-node limit, and the holder GPU cap. An account without research access cannot reach research policy by naming a research account.
+Naming a course account applies every course rule at once: the assignment budget, course QoS, the course capacity reservation when the class has one, the one-node limit, and the holder GPU cap. An account without research access cannot reach research policy by naming a research account.
 
 When such an account submits without `--account` while a course assignment is open, the job runs under research policy and Slurm prints one reminder naming the assignment account it was not charged to. The job is already submitted; nothing is rejected.
 

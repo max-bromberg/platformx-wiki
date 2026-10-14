@@ -4,13 +4,14 @@ Sprocket is the portal for the cluster, and it serves this guide under **Wiki**.
 
 ## Cluster information
 
-- **Home** summarizes GPU capacity, running and pending work, active users, recent utilization, and the overall contention index.
-- **Queue** shows current jobs and the CPU, memory, and GPU each one holds. It explains whether GPU utilization is unavailable because a job is pending, CPU-only, or missing telemetry. The list can be filtered by whose job it is, whether it is coursework or research, or whether it holds a GPU, and sorted by job, user, class, state, CPU, memory, GPU, elapsed time, or time limit.
-- **Usage** combines current pressure with seven-day activity and evidence-qualified wait ranges for comparable one- and two-GPU jobs. Forecasts are estimates, not reservations or guarantees.
-- **Monitor** gives signed-in lab users detailed node, GPU, process, storage, and telemetry-source health. It shows what each node currently holds in CPU, memory, and GPU, and how much of that is coursework versus research, both per node and across the cluster.
-- **Efficiency** ranks lab users once enough job and GPU evidence exists. It combines GPU activity, CPU and memory fit, and storage headroom. Use it to find waste in your own jobs; it is not a performance grade.
+- **Home** shows News and Changes and one card. The card is Cluster at a glance by default: GPU capacity, running and pending work, the node list, recent utilization, and the sources behind them. A signed-in user can choose **Change card** to put any Hub widget they can see there instead. Visitors always see Cluster at a glance.
+- **Hub** puts the queue, nodes, usage, and storage on one page. Each panel is a widget you can move, resize, add, or remove, and your layout is saved to your account, so it is the same in any browser. Templates are ready-made layouts: Default, Queue watcher, and Course for every signed-in user, Storage for lab users, and Cluster operator for administrators. You can also save your own layout and share it by link. Clicking a node, user, pending reason, job class, or dataset filters every widget, and the filters go into the address bar so a filtered view can be shared. Opening a job, node, user, or dataset shows its details in a drawer beside the Hub, and **Pop out** moves a widget, or the whole Hub, into its own window. The Hub has a short tour, which you can take again from the Templates menu.
+- The widgets you can add depend on how you are signed in. Course and lab users get the queue tiles, the job table, why jobs are waiting, wait forecasts for comparable one- and two-GPU jobs, seven-day activity, contention, GPU occupancy, node allocation split into coursework and research, storage capacity, dataset I/O, I/O pressure, their own jobs, and, for course work, their team budget. Lab users also get per-GPU and per-node detail and storage throughput, latency, and cache and log devices. Administrators also get Node health. Wait forecasts are estimates, not reservations or guarantees.
+- Visitors see the Default layout with the cluster-wide counts filled in: running and pending work, users in the queue, and GPUs allocated. The other widgets ask them to sign in, and the layout cannot be changed.
+- The old **Queue**, **Usage**, and **Monitor** addresses open the Hub. Sprocket can also be installed from the browser as an app, and the installed app opens on the Hub.
+- **Efficiency** ranks research members once enough job and GPU evidence from their research jobs exists. Students do not appear, and course jobs never count, including for a researcher who also takes or staffs a course. It combines GPU activity, CPU and memory fit, and storage headroom. Use it to find waste in your own jobs; it is not a performance grade.
 
-Across all of these, a figure Sprocket could not measure is shown as unavailable rather than as zero, and a chart draws an unmeasured interval as a gap. A stale reading is labelled stale.
+Across all of these pages, a figure Sprocket could not measure is shown as unavailable rather than as zero, and a chart draws an unmeasured interval as a gap. A stale reading is labelled stale.
 
 ## Your account
 
@@ -26,7 +27,7 @@ Students receive a three-part course workspace:
 
 Deadlines on these pages are shown in the course timezone.
 
-TAs and instructors also receive the Staff console for rosters, teams, assignment publication and amendment, enrolment changes, exceptions, and the list of holders with nothing submitted before a deadline.
+TAs and instructors also receive the Staff console for rosters, teams, assignment publication and amendment, enrolment changes, exceptions, and the list of holders with nothing submitted before a deadline. Its **Submissions** tab downloads an assignment's submissions as one zip for grading. Under **Assignments**, each path assignment has a **Submission checks** panel where staff set up, test, and review the checks Sprocket runs on each path revision. TAs see both; setting up a check stays with the instructor.
 
 See [Course workflow](coursework.md) before submitting course jobs.
 

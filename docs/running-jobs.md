@@ -100,7 +100,7 @@ sacct -j <jobid> --format=JobID,State,Elapsed,MaxRSS,ReqTRES
 
 Pending is normal. The reason field explains whether the job is waiting for resources, priority, a reservation, or an account/QoS limit. Start times are estimates and become less reliable farther into the future.
 
-Use [Sprocket Queue](/queue) and [Usage](/usage) for the same information in one view.
+Use the Sprocket [Hub](/hub) for the same information in one view.
 
 ## Stop or change work
 
