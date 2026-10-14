@@ -104,4 +104,4 @@ Ordinary users are capped at about eight CPUs on `sprlab005` so one local proces
 
 ## Where do I ask for help?
 
-Use [Sprocket Support](/support) for technical failures and include exact commands, job IDs, times, and errors. Use [Resource requests](/requests) for reviewed research resources. Course assignment rules, grading, teams, and academic exceptions belong with course staff and the course adjustment flow.
+Use [Sprocket Support](/support) for technical failures and include exact commands, job IDs, times, and errors. Use [Resource requests](/requests) for reviewed research resources. Course assignment rules, grading, teams, and academic exceptions belong with course staff; ask them directly, and keep medical or other private details out of Support (see [extensions and exceptions](#how-do-i-request-a-course-extension-or-budget-exception)).
