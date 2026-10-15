@@ -21,7 +21,9 @@ Interactive research sessions are routed to `debug`, which has a one-hour cap an
 
 Within a research tier, recent GPU-weighted usage affects queue order. The decay half-life is three days: usage matters most immediately and fades continuously rather than resetting on a particular day. A person who has used less recently generally moves ahead of a peer in the same tier.
 
-QoS priority dominates fair share and age, so tiers do not invert. A `normal` job remains ahead of `undergrad`, and both remain ahead of `scavenger`, regardless of recent usage.
+Within a tier, a job also gets a small boost for each GPU it requests. Without it, a job that needs two GPUs on one node can keep being passed by single-GPU jobs that fit into whatever frees up first. The boost is small, so it settles near-ties between people with similar recent use rather than overriding fair share.
+
+QoS priority dominates fair share, age, and job size, so tiers do not invert. A `normal` job remains ahead of `undergrad`, and both remain ahead of `scavenger`, regardless of recent usage.
 
 Reserved GPUs count even when utilization is low. This is deliberate: a GPU held idle is unavailable to everybody else. Request accurate resources and cancel abandoned jobs.
 
