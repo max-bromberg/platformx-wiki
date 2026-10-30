@@ -19,9 +19,11 @@ Interactive research sessions are routed to `debug`, which has a one-hour cap an
 
 ## CPUs per user
 
-Each tier limits how many CPUs one person holds at once, across all of their jobs in that tier. CPUs inside GPU jobs count. The limit is 32 CPUs for each GPU the tier allows, which is what a GPU job gets by default, so jobs with default CPUs reach the GPU limit and the CPU limit together. Slurm counts logical CPUs: 128 CPUs is 64 physical cores.
+Each tier except `scavenger` limits how many CPUs one person holds at once, across all of their jobs in that tier. CPUs inside GPU jobs count, and so do interactive sessions. The limit is 32 CPUs for each GPU the tier allows, which is what a GPU job gets by default, so jobs with default CPUs reach the GPU limit and the CPU limit together. Slurm counts logical CPUs: 128 CPUs is 64 physical cores.
 
-A job that would take you past the limit waits in the queue with the reason `QOSMaxCpuPerUserLimit` and starts when one of your jobs ends. A single job that asks for more CPUs than the limit is rejected when you submit it, because it could never start. To use more CPUs than your tier allows, submit the extra work with `--qos=scavenger` (see [Best effort](#best-effort-scavenger) below). Scavenger jobs do not count toward your tier's limits.
+A job that would take you past the limit waits in the queue with the reason `QOSMaxCpuPerUserLimit` and starts when enough of your jobs end. A single job that asks for more CPUs than the limit could never start, and in most cases it is rejected when you submit it. To use more CPUs than your tier allows, submit the extra work with `--qos=scavenger` (see [Best effort](#best-effort-scavenger) below). Scavenger jobs do not count toward your tier's limits.
+
+An `salloc` or `srun` session cannot use `scavenger`, so if your batch jobs hold your whole limit, a new session waits until one of them ends. Leave room for interactive work, for example by limiting how many array tasks run at once with `--array=0-99%6`. A job submitted with `--exclusive` holds every CPU on its nodes (128 per node), so in `normal` one exclusive node uses your whole limit.
 
 ## Research fair sharing
 
